@@ -45,7 +45,6 @@ namespace App
 
         public bool IsEmptyField(int position)
         {
-            // return !(this.GetField(position).Equals(Board.Marks.x) || this.GetField(position).Equals("o"));
             return !Enum.IsDefined(typeof(Marks), this.GetField(position));
         }
         
