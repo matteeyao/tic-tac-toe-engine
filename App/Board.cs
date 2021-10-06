@@ -92,11 +92,11 @@ namespace App
 
         public bool IsTied()
         {
-            if (this.HasWinner())
-            {
-                return false;
-            }
+            return !this.HasWinner() && this.IsFilled();
+        }
         
+        private bool IsFilled()
+        {
             foreach (string field in this.grid)
             {
                 Int32.TryParse(field, out int val);
