@@ -22,7 +22,7 @@ namespace Test.UI
         public void PrintsGreeting()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintGreeting();
+            MessageHandler.Print(MessageHandler.StaticMessage.Greeting);
             StringAssert.Contains("Welcome to Tic-Tac-Toe!", sw.ToString());
         }
 
@@ -30,7 +30,7 @@ namespace Test.UI
         public void PrintsOptionalGameModes()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintGameModes();
+            MessageHandler.Print(MessageHandler.StaticMessage.GameModes);
             StringAssert.Contains("(1) Play against a friend\n", sw.ToString());
         }
 
@@ -38,7 +38,7 @@ namespace Test.UI
         public void PrintsRequestToChooseFromOneOfTheGameModes()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintRequestToChooseGameMode();
+            MessageHandler.Print(MessageHandler.StaticMessage.RequestToChooseGameMode);
             StringAssert.Contains("Choose from one of the above options: ", sw.ToString());
         }
         
@@ -46,15 +46,16 @@ namespace Test.UI
         public void IfInputIsInvalid_PrintsErrorAndRequestToChooseFromOneOfTheGameModes()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintRequestToChooseGameModeAfterInvalidInput();
-            StringAssert.Contains("Invalid option. Choose again from options 1-3: ", sw.ToString());
+            MessageHandler.Print(MessageHandler.StaticMessage.RequestToChooseGameModeAfterInvalidInput);
+            // StringAssert.Contains("Invalid option. Choose again from options 1-3: ", sw.ToString());
+            StringAssert.Contains("Invalid option. Choose option 1: ", sw.ToString());
         }
         
         [Test] 
         public void PrintsRequestToEnterBoardDimensionBetweenThreeAndFive()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintRequestToInputBoardSize();
+            MessageHandler.Print(MessageHandler.StaticMessage.RequestToInputBoardSize);
             StringAssert.Contains("Enter board size 3, 4, or 5 (Press enter to default to 3): ", sw.ToString());
         }
         
@@ -62,7 +63,7 @@ namespace Test.UI
         public void IfInputIsInvalid_PrintsErrorAndRequestToEnterBoardDimensionBetweenThreeAndFive()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintRequestToInputBoardSizeAfterInvalidInput();
+            MessageHandler.Print(MessageHandler.StaticMessage.RequestToInputBoardSizeAfterInvalidInput);
             StringAssert.Contains("Invalid board size. Enter board size 3, 4, or 5: ", sw.ToString());
         }
 
@@ -94,7 +95,7 @@ namespace Test.UI
         public void PrintsNoticeOfAnInvalidPositionEntered()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintNoticeForInvalidPosition();
+            MessageHandler.Print(MessageHandler.StaticMessage.NoticeForInvalidPosition);
             StringAssert.Contains("Invalid position! ", sw.ToString());
         }
 
@@ -102,7 +103,7 @@ namespace Test.UI
         public void PrintsNoticeIfAPositionHasAlreadyBeenTaken()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintNoticeIfPositionIsTaken();
+            MessageHandler.Print(MessageHandler.StaticMessage.NoticeIfPositionIsTaken);
             StringAssert.Contains("Position is already taken!\n", sw.ToString());
         }
         
@@ -118,7 +119,7 @@ namespace Test.UI
         public void PrintsAcknowledgementOfGameEndingInADraw()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintDeclarationOfDraw();
+            MessageHandler.Print(MessageHandler.StaticMessage.DeclarationOfDraw);
             StringAssert.Contains("No one wins!", sw.ToString());
         }
         
