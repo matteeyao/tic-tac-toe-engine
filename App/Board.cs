@@ -9,9 +9,9 @@ namespace App
         public enum Marks { x, o };
         public enum Dimensions
         {
-            ThreeByThree=3,
-            FourByFour=4,
-            FiveByFive=5
+            ThreeByThree = 3,
+            FourByFour = 4,
+            FiveByFive = 5
         };
         private readonly string[] grid;
         private readonly int dimension;
