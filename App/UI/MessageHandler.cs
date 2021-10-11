@@ -34,6 +34,7 @@ namespace App.UI
             public static StaticMessage RequestToChooseGameModeAfterInvalidInput => new StaticMessage("Invalid option. Choose option 1: ");
             public static StaticMessage RequestToInputBoardSize => new StaticMessage("Enter board size 3, 4, or 5 (Press enter to default to 3): ");
             public static StaticMessage RequestToInputBoardSizeAfterInvalidInput => new StaticMessage("Invalid board size. Enter board size 3, 4, or 5: ");
+            public static StaticMessage NoticeForInvalidMarker => new StaticMessage("Invalid emoji mark!\n");
             public static StaticMessage NoticeForInvalidPosition => new StaticMessage("Invalid position! ");
             public static StaticMessage NoticeIfPositionIsTaken => new StaticMessage("Position is already taken!\n");
             public static StaticMessage DeclarationOfDraw => new StaticMessage("No one wins!\n");
@@ -47,12 +48,12 @@ namespace App.UI
         public static void PrintRequestForPlayerOnesMarker(bool isOpponentComputer)
         {
             string title = isOpponentComputer ? "your" : "player one's";
-            Console.Write($"Enter {title} mark (Hit enter to default to {DefaultBoardEmojiMarker.Cross.code}): ");
+            Console.Write($"Enter {title} emoji mark (Hit enter to default to {DefaultBoardEmojiMarker.Cross.code}): ");
         }
 
         public static void PrintRequestForPlayerTwosMarker()
         {
-            Console.Write($"Enter player two's mark (Hit enter to default to {DefaultBoardEmojiMarker.Circle.code}): ");
+            Console.Write($"Enter player two's emoji mark (Hit enter to default to {DefaultBoardEmojiMarker.Circle.code}): ");
         }
 
         public static void PrintRequestForPlayerToInputMove(string mark, int boardDimension)
@@ -63,6 +64,11 @@ namespace App.UI
         public static void PrintDeclarationOfWinner(string mark)
         {
             Console.WriteLine($"{mark} won the game!");
+        }
+
+        public static string ReadInput()
+        {
+            return Console.ReadLine();
         }
 
         public static void PrintBoard(string[,] rows, Dictionary<string, Player> players)

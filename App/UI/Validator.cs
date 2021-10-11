@@ -26,7 +26,7 @@ namespace App.UI
         
         public static bool IsMarkerValid(string text)
         {
-            return IsMarkerAnEmoji(text);
+            return text.Length == 0 || IsMarkerAnEmoji(text);
         }
         
         private static bool IsMarkerAnEmoji(string text)

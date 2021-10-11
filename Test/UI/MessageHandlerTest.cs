@@ -72,7 +72,7 @@ namespace Test.UI
         {
             StringWriter sw = CaptureOutput();
             MessageHandler.PrintRequestForPlayerOnesMarker(false);
-            StringAssert.Contains("Enter player one's mark (Hit enter to default to \u274C): ", sw.ToString());
+            StringAssert.Contains("Enter player one's emoji mark (Hit enter to default to \u274C): ", sw.ToString());
         }
         
         [Test]
@@ -80,7 +80,7 @@ namespace Test.UI
         {
             StringWriter sw = CaptureOutput();
             MessageHandler.PrintRequestForPlayerTwosMarker();
-            StringAssert.Contains("Enter player two's mark (Hit enter to default to \u2B55): ", sw.ToString());
+            StringAssert.Contains("Enter player two's emoji mark (Hit enter to default to \u2B55): ", sw.ToString());
         }
 
         [Test]
