@@ -16,6 +16,8 @@ namespace App
         private readonly string[] grid;
         private readonly int dimension;
 
+        public Board() : this(Dimensions.ThreeByThree, null) { }
+
         public Board(Dimensions dimension, string[] grid = null)
         {
             this.dimension = (int) dimension;
@@ -37,13 +39,13 @@ namespace App
             this.grid[position] = mark;
         }
 
-        public bool IsValidField(int position)
+        public virtual bool IsValidField(int position)
         {
             int numFields = (int)Math.Pow(this.dimension, 2);
-            return !(position < 0 || numFields < position);
+            return !(position < 0 || numFields <= position);
         }
 
-        public bool IsEmptyField(int position)
+        public virtual bool IsEmptyField(int position)
         {
             return !Enum.IsDefined(typeof(Marks), this.GetField(position));
         }
