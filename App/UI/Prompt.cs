@@ -40,7 +40,6 @@ namespace App.UI
         public static int GetMove(string mark, Board board)
         {
             MessageHandler.PrintRequestForPlayerToInputMove(mark, board.GetDimension());
-            
             string input = MessageHandler.ReadInput();
             
             if (!Validator.IsInputAPositiveInteger(input))
