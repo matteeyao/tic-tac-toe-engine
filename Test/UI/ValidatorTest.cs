@@ -57,15 +57,15 @@ namespace Test.UI
         [Test]
         public void ReturnsTrueIfInputCanBeParsedIntoAPositiveInteger()
         {
-            Assert.IsTrue(Validator.IsInputAnInteger("0"));
-            Assert.IsTrue(Validator.IsInputAnInteger("12"));
+            Assert.IsTrue(Validator.IsInputAPositiveInteger("0"));
+            Assert.IsTrue(Validator.IsInputAPositiveInteger("12"));
         }
         
         [Test]
         public void ReturnsFalseIfInputCannotBeParsedIntoAPositiveInteger()
         {
-            Assert.IsFalse(Validator.IsInputAnInteger("hello"));
-            Assert.IsFalse(Validator.IsInputAnInteger(""));
+            Assert.IsFalse(Validator.IsInputAPositiveInteger("hello"));
+            Assert.IsFalse(Validator.IsInputAPositiveInteger(""));
         }
 
         private Board GetThreeByThreeBoard()

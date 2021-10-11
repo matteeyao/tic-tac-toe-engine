@@ -21,7 +21,7 @@ namespace App.UI
         public static bool IsBoardSizeValid(string input)
         {
             int option = ParseIntFromInput(input);
-            return Enumerable.Range(3, 3).Contains(option);
+            return Enum.IsDefined(typeof(Board.Dimensions), option);
         }
         
         public static bool IsMarkerValid(string text)
@@ -35,7 +35,7 @@ namespace App.UI
             return Regex.Match(text, emojiPattern, RegexOptions.IgnoreCase).Success;
         }
 
-        public static bool IsInputAnInteger(string input)
+        public static bool IsInputAPositiveInteger(string input)
         {
             return 0 <= ParseIntFromInput(input);
         }
