@@ -71,16 +71,16 @@ namespace Test.UI
         public void PrintsRequestForPlayerOneToInputHerEmoji()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintRequestForPlayerOnesMarker(false);
-            StringAssert.Contains("Enter player one's mark (Hit enter to default to \u274C): ", sw.ToString());
+            MessageHandler.Print(MessageHandler.DynamicMessage.RequestForPlayerOnesMarker(false));
+            StringAssert.Contains("Enter player one's emoji mark (Hit enter to default to \u274C): ", sw.ToString());
         }
         
         [Test]
         public void PrintsRequestForPlayerTwoToInputHerEmoji()
         {
             StringWriter sw = CaptureOutput();
-            MessageHandler.PrintRequestForPlayerTwosMarker();
-            StringAssert.Contains("Enter player two's mark (Hit enter to default to \u2B55): ", sw.ToString());
+            MessageHandler.Print(MessageHandler.StaticMessage.RequestForPlayerTwosMarker);
+            StringAssert.Contains("Enter player two's emoji mark (Hit enter to default to \u2B55): ", sw.ToString());
         }
 
         [Test]

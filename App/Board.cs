@@ -13,8 +13,8 @@ namespace App
             FourByFour = 4,
             FiveByFive = 5
         };
-        private readonly string[] grid;
         private readonly int dimension;
+        private readonly string[] grid;
 
         public Board() : this(Dimensions.ThreeByThree, null) { }
 
@@ -22,6 +22,11 @@ namespace App
         {
             this.dimension = (int) dimension;
             this.grid = grid ?? GenerateGrid((int) dimension);
+        }
+
+        public int GetDimension()
+        {
+            return this.dimension;
         }
 
         public string[] GetGrid()
