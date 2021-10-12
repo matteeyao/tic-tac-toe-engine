@@ -23,17 +23,27 @@ namespace App.UI
         
         public static string GetPlayerOneMarker(bool isOpponentComputer = true)
         {
-            MessageHandler.PrintRequestForPlayerOnesMarker(isOpponentComputer);
+            MessageHandler.Print(MessageHandler.DynamicMessage.RequestForPlayerOnesMarker(isOpponentComputer));
             string marker = GetString(MessageHandler.StaticMessage.NoticeForInvalidMarker,
                 Validator.IsMarkerValid);
+            return DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(marker);
+        }
+
+        private static string DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(string marker)
+        {
             return marker.Length == 0 ? MessageHandler.DefaultBoardEmojiMarker.Cross.code : marker;
         }
         
         public static string GetPlayerTwoMarker()
         {
-            MessageHandler.PrintRequestForPlayerTwosMarker();
+            MessageHandler.Print(MessageHandler.StaticMessage.RequestForPlayerTwosMarker);
             string marker = GetString(MessageHandler.StaticMessage.NoticeForInvalidMarker,
                 Validator.IsMarkerValid);
+            return DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(marker);
+        }
+        
+        private static string DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(string marker)
+        {
             return marker.Length == 0 ? MessageHandler.DefaultBoardEmojiMarker.Circle.code : marker;
         }
 
