@@ -5,24 +5,24 @@ using App.UI;
 
 namespace App
 {
-    public sealed class Game
+    public class Game
     {
-        private Dictionary<Board.Marks, Player> players;
+        private Dictionary<string, Player> players;
         private Board board;
-        private Board.Marks turn;
+        private string turn;
 
         public Game(Player playerOne, Player playerTwo, Board.Dimensions boardSize)
         {
-            this.players = new Dictionary<Board.Marks, Player>()
+            this.players = new Dictionary<string, Player>()
             {
-                {Board.Marks.x, playerOne},
-                {Board.Marks.o, playerTwo}
+                {Board.Marks.x.ToString(), playerOne},
+                {Board.Marks.o.ToString(), playerTwo}
             };
             this.board = new Board(boardSize);
-            this.turn = Board.Marks.x;
+            this.turn = Board.Marks.x.ToString();
         }
 
-        public Board GetBoard()
+        public virtual Board GetBoard()
         {
             return this.board;
         }
@@ -58,7 +58,8 @@ namespace App
         private void SwapTurn()
         {
             // swap next whose turn it will be next
-            this.turn = ((this.turn.Equals(Board.Marks.x)) ? Board.Marks.o : Board.Marks.x);
+            this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? 
+                Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
 
         private void PrintResults()

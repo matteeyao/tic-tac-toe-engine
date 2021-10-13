@@ -47,7 +47,7 @@ namespace Test.Players
         public void ReturnsAZeroBasedIndexUsedToAccessBoard()
         {
             TestHelper.SetInput("1\n");
-            string currentTurn = "x";
+            string currentTurn = Board.Marks.x.ToString();
             int index = this.human.Move(this.game, currentTurn);
             Assert.AreEqual(0, index);
         }
