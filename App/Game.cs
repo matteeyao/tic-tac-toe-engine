@@ -4,7 +4,7 @@ using App.UI;
 
 namespace App
 {
-    public class Game
+    public sealed class Game
     {
         private Dictionary<string, Player> players;
         private Board board;
@@ -21,7 +21,7 @@ namespace App
             this.turn = "x";
         }
 
-        public virtual Board GetBoard()
+        public Board GetBoard()
         {
             return this.board;
         }
