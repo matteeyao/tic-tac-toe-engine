@@ -21,7 +21,7 @@ namespace App.UI
         public static bool IsBoardSizeValid(string input)
         {
             int option = ParseIntFromInput(input);
-            return Enum.IsDefined(typeof(Board.Dimensions), option);
+            return input.Equals("") || Enum.IsDefined(typeof(Board.Dimensions), option);
         }
         
         public static bool IsMarkerValid(string text)

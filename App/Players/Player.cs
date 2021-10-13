@@ -4,9 +4,16 @@ namespace App.Players
     {
         private string marker;
 
+        protected Player(string marker)
+        {
+            this.marker = marker;
+        }
+
         public virtual string GetMarker()
         {
             return this.marker;
         }
+
+        public abstract int Move(Game game, string mark);
     }
 }

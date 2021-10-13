@@ -18,7 +18,13 @@ namespace App.UI
             MessageHandler.Print(MessageHandler.StaticMessage.RequestToInputBoardSize);
             int boardSize = GetInteger(MessageHandler.StaticMessage.RequestToInputBoardSizeAfterInvalidInput,
                 Validator.IsBoardSizeValid);
-            return (Board.Dimensions) Enum.ToObject(typeof(Board.Dimensions), boardSize);
+            return DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(boardSize);
+        }
+        
+        private static Board.Dimensions DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(int boardSize)
+        {
+            return boardSize == -1 ? Board.Dimensions.ThreeByThree :
+                (Board.Dimensions) Enum.ToObject(typeof(Board.Dimensions), boardSize);
         }
         
         public static string GetPlayerOneMarker(bool isOpponentComputer = true)
@@ -103,7 +109,7 @@ namespace App.UI
         
         private static int ConvertStringToIntegerOutput(string input)
         {
-            return Int32.Parse(input);
+            return Int32.TryParse(input, out int result) ? result : -1;
         }
     }
 }

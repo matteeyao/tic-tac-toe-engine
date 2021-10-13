@@ -29,9 +29,9 @@ namespace App
             return this.dimension;
         }
 
-        public string[] GetGrid()
+        public string[,] GetGrid()
         {
-            return this.grid;
+            return this.GetRows();
         }
 
         public string GetField(int position)
