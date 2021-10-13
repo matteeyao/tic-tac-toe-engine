@@ -17,7 +17,12 @@ namespace Test
         [Test]
         public void FieldsAreEmptyUponInitialization()
         {
-            string[] emptyBoard = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            string[,] emptyBoard =
+            {
+                { "1", "2", "3" }, 
+                { "4", "5", "6" }, 
+                { "7", "8", "9" }
+            };
             Assert.AreEqual(emptyBoard, board.GetGrid());
         }
 

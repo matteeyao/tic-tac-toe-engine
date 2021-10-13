@@ -27,6 +27,7 @@ namespace Test.UI
         [Test]
         public void ReturnsTrueIfBoardSizeIsValid()
         {
+            Assert.IsTrue(Validator.IsBoardSizeValid(""));
             Assert.IsTrue(Validator.IsBoardSizeValid("3"));
             Assert.IsTrue(Validator.IsBoardSizeValid("4"));
             Assert.IsTrue(Validator.IsBoardSizeValid("5"));
@@ -68,7 +69,7 @@ namespace Test.UI
             Assert.IsFalse(Validator.IsInputAPositiveInteger(""));
         }
 
-        private Board GetThreeByThreeBoard()
+        private Board GetEmptyThreeByThreeBoard()
         {
             var mock = new Mock<Board>()
             {
@@ -81,11 +82,25 @@ namespace Test.UI
                 .Returns(true);
             return mock.Object;
         }
+        
+        private Board GetFilledThreeByThreeBoard()
+        {
+            var mock = new Mock<Board>()
+            {
+                CallBase = true
+            };
+            int boardLength = (int) Math.Pow((int) Board.Dimensions.ThreeByThree, 2);
+            mock.Setup(x => x.IsValidField(It.IsIn(Enumerable.Range(0, boardLength))))
+                .Returns(true);
+            mock.Setup(x => x.IsEmptyField(It.IsIn(Enumerable.Range(0, boardLength))))
+                .Returns(false);
+            return mock.Object;
+        }
 
         [Test]
         public void ReturnsTrueIfMoveIsWithinBounds()
         {
-            Board threeByThreeBoard = GetThreeByThreeBoard();
+            Board threeByThreeBoard = GetEmptyThreeByThreeBoard();
             Assert.IsTrue(Validator.IsMoveWithinBounds(threeByThreeBoard, 0));
             Assert.IsTrue(Validator.IsMoveWithinBounds(threeByThreeBoard, 8));
         }
@@ -93,7 +108,7 @@ namespace Test.UI
         [Test]
         public void ReturnsFalseIfMoveIsWithinBounds()
         {
-            Board threeByThreeBoard = GetThreeByThreeBoard();
+            Board threeByThreeBoard = GetEmptyThreeByThreeBoard();
             Assert.IsFalse(Validator.IsMoveWithinBounds(threeByThreeBoard, -1));
             Assert.IsFalse(Validator.IsMoveWithinBounds(threeByThreeBoard, 9));
         }
@@ -101,9 +116,16 @@ namespace Test.UI
         [Test]
         public void ReturnsTrueIfMoveHasNotAlreadyBeenTaken()
         {
-            Board threeByThreeBoard = GetThreeByThreeBoard();
+            Board threeByThreeBoard = GetEmptyThreeByThreeBoard();
             Assert.IsTrue(Validator.IsMoveAvailable(threeByThreeBoard, 0));
             Assert.IsTrue(Validator.IsMoveAvailable(threeByThreeBoard, 8));
+        }
+        
+        [Test]
+        public void ReturnsFalseIfMoveHasAlreadyBeenTaken()
+        {
+            Board threeByThreeBoard = GetFilledThreeByThreeBoard();
+            Assert.IsFalse(Validator.IsMoveAvailable(threeByThreeBoard, 2));
         }
     }
 }

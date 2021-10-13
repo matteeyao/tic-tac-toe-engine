@@ -125,8 +125,8 @@ namespace Test.UI
         
         private Dictionary<string, Player> GetPlayers()
         {
-            var playerOne = new Mock<Player>( );
-            var playerTwo = new Mock<Player>( );
+            var playerOne = new Mock<Player>(MessageHandler.DefaultBoardEmojiMarker.Cross.code);
+            var playerTwo = new Mock<Player>(MessageHandler.DefaultBoardEmojiMarker.Circle.code);
             playerOne.Setup(x => x.GetMarker()).Returns("\u274C");
             playerTwo.Setup(x => x.GetMarker()).Returns("\u2B55");
             Dictionary<string, Player> players = new Dictionary<string, Player>()
