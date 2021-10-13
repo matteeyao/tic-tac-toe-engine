@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using App.Players;
 using App.UI;
@@ -6,19 +7,19 @@ namespace App
 {
     public sealed class Game
     {
-        private Dictionary<string, Player> players;
+        private Dictionary<Board.Marks, Player> players;
         private Board board;
-        private string turn;
+        private Board.Marks turn;
 
         public Game(Player playerOne, Player playerTwo, Board.Dimensions boardSize)
         {
-            this.players = new Dictionary<string, Player>()
+            this.players = new Dictionary<Board.Marks, Player>()
             {
-                {"x", playerOne},
-                {"o", playerTwo}
+                {Board.Marks.x, playerOne},
+                {Board.Marks.o, playerTwo}
             };
             this.board = new Board(boardSize);
-            this.turn = "x";
+            this.turn = Board.Marks.x;
         }
 
         public Board GetBoard()
@@ -57,7 +58,7 @@ namespace App
         private void SwapTurn()
         {
             // swap next whose turn it will be next
-            this.turn = ((this.turn.Equals("x")) ? "o" : "x");
+            this.turn = ((this.turn.Equals(Board.Marks.x)) ? Board.Marks.o : Board.Marks.x);
         }
 
         private void PrintResults()
