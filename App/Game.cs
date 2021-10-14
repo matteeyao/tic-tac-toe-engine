@@ -57,7 +57,6 @@ namespace App
 
         private void SwapTurn()
         {
-            // swap next whose turn it will be next
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? 
                 Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
