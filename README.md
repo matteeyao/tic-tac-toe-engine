@@ -23,6 +23,8 @@
 
 * `dotnet` - .Net Runtime
 
+* `coverlet.msbuild` - cross platform code coverage library for .NET
+
 ## Prerequisites
 
 There are no prerequisites for this project.
