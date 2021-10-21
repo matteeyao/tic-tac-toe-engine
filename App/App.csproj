@@ -3,6 +3,17 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
+        
+        <PackageId>TicTacToe</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Matthew Yao</Authors>
+        <Owners>matteeyao</Owners>
+        <Company>8th Light</Company>
+        
+        <RepositoryUrl>https://github.com/matteeyao/tic-tac-toe.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
 </Project>
