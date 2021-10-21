@@ -1,0 +1,1636 @@
+{
+  "App.dll": {
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/Board.cs": {
+      "App.Board": {
+        "System.Int32 App.Board::GetDimension()": {
+          "Lines": {
+            "28": 7,
+            "29": 7,
+            "30": 7
+          },
+          "Branches": []
+        },
+        "System.String[0...,0...] App.Board::GetGrid()": {
+          "Lines": {
+            "33": 2,
+            "34": 2,
+            "35": 2
+          },
+          "Branches": []
+        },
+        "System.String App.Board::GetField(System.Int32)": {
+          "Lines": {
+            "38": 10,
+            "39": 10,
+            "40": 10
+          },
+          "Branches": []
+        },
+        "System.Void App.Board::SetField(System.Int32,System.String)": {
+          "Lines": {
+            "43": 2,
+            "44": 2,
+            "45": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean App.Board::IsValidField(System.Int32)": {
+          "Lines": {
+            "48": 9,
+            "49": 9,
+            "50": 9,
+            "51": 9
+          },
+          "Branches": [
+            {
+              "Line": 50,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 8
+            },
+            {
+              "Line": 50,
+              "Offset": 26,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Boolean App.Board::IsEmptyField(System.Int32)": {
+          "Lines": {
+            "54": 9,
+            "55": 9,
+            "56": 9
+          },
+          "Branches": []
+        },
+        "App.Board App.Board::Duplicate()": {
+          "Lines": {
+            "59": 1,
+            "60": 1,
+            "61": 1,
+            "62": 1
+          },
+          "Branches": []
+        },
+        "System.String App.Board::Winner()": {
+          "Lines": {
+            "65": 10,
+            "66": 10,
+            "67": 10,
+            "68": 10,
+            "70": 10,
+            "71": 10
+          },
+          "Branches": [
+            {
+              "Line": 70,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 6
+            },
+            {
+              "Line": 70,
+              "Offset": 41,
+              "EndOffset": 43,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 70,
+              "Offset": 30,
+              "EndOffset": 51,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 10
+            },
+            {
+              "Line": 70,
+              "Offset": 41,
+              "EndOffset": 51,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.String App.Board::WinnerHelper(System.String[0...,0...])": {
+          "Lines": {
+            "74": 19,
+            "75": 19,
+            "76": 19,
+            "77": 110,
+            "78": 45,
+            "79": 45,
+            "80": 360,
+            "81": 135,
+            "82": 135,
+            "83": 135,
+            "85": 45,
+            "86": 9,
+            "87": 9,
+            "89": 36,
+            "91": 10,
+            "92": 19
+          },
+          "Branches": [
+            {
+              "Line": 77,
+              "Offset": 107,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 45
+            },
+            {
+              "Line": 80,
+              "Offset": 64,
+              "EndOffset": 34,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 135
+            },
+            {
+              "Line": 80,
+              "Offset": 64,
+              "EndOffset": 66,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 45
+            },
+            {
+              "Line": 85,
+              "Offset": 84,
+              "EndOffset": 86,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 9
+            },
+            {
+              "Line": 85,
+              "Offset": 84,
+              "EndOffset": 94,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 36
+            },
+            {
+              "Line": 77,
+              "Offset": 107,
+              "EndOffset": 109,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Boolean App.Board::HasWinner()": {
+          "Lines": {
+            "95": 2,
+            "96": 2,
+            "97": 2
+          },
+          "Branches": []
+        },
+        "System.Boolean App.Board::IsTied()": {
+          "Lines": {
+            "100": 2,
+            "101": 2,
+            "102": 2
+          },
+          "Branches": [
+            {
+              "Line": 101,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 101,
+              "Offset": 7,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Boolean App.Board::IsFilled()": {
+          "Lines": {
+            "105": 1,
+            "106": 21,
+            "107": 9,
+            "108": 9,
+            "109": 9,
+            "110": 0,
+            "111": 0,
+            "113": 9,
+            "115": 1,
+            "116": 1
+          },
+          "Branches": [
+            {
+              "Line": 106,
+              "Offset": 52,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 9
+            },
+            {
+              "Line": 109,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 109,
+              "Offset": 35,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            },
+            {
+              "Line": 106,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Collections.Generic.IEqualityComparer`1<App.Board> App.Board::get_GridDimensionComparer()": {
+          "Lines": {
+            "135": 0
+          },
+          "Branches": []
+        },
+        "System.String[] App.Board::GenerateGrid(System.Int32)": {
+          "Lines": {
+            "138": 56,
+            "139": 56,
+            "140": 882,
+            "141": 56
+          },
+          "Branches": []
+        },
+        "System.String[0...,0...] App.Board::GetRows()": {
+          "Lines": {
+            "144": 12,
+            "145": 12,
+            "146": 12,
+            "147": 240,
+            "148": 108,
+            "149": 108,
+            "150": 108,
+            "152": 12,
+            "153": 12
+          },
+          "Branches": [
+            {
+              "Line": 147,
+              "Offset": 59,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 108
+            },
+            {
+              "Line": 147,
+              "Offset": 59,
+              "EndOffset": 61,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 12
+            }
+          ]
+        },
+        "System.String[0...,0...] App.Board::GetColumns()": {
+          "Lines": {
+            "156": 10,
+            "157": 10,
+            "158": 10,
+            "159": 200,
+            "160": 90,
+            "161": 90,
+            "162": 90,
+            "164": 10,
+            "165": 10
+          },
+          "Branches": [
+            {
+              "Line": 159,
+              "Offset": 59,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 90
+            },
+            {
+              "Line": 159,
+              "Offset": 59,
+              "EndOffset": 61,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.String[0...,0...] App.Board::GetDiagonals()": {
+          "Lines": {
+            "168": 10,
+            "169": 10,
+            "170": 10,
+            "171": 80,
+            "172": 30,
+            "173": 30,
+            "174": 30,
+            "176": 80,
+            "177": 30,
+            "178": 30,
+            "179": 30,
+            "181": 10,
+            "182": 10
+          },
+          "Branches": [
+            {
+              "Line": 171,
+              "Offset": 59,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 30
+            },
+            {
+              "Line": 171,
+              "Offset": 59,
+              "EndOffset": 61,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 10
+            },
+            {
+              "Line": 176,
+              "Offset": 116,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 30
+            },
+            {
+              "Line": 176,
+              "Offset": 116,
+              "EndOffset": 118,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 10
+            }
+          ]
+        },
+        "System.Void App.Board::.ctor()": {
+          "Lines": {
+            "19": 57
+          },
+          "Branches": []
+        },
+        "System.Void App.Board::.ctor(App.Board/Dimensions,System.String[])": {
+          "Lines": {
+            "21": 67,
+            "22": 67,
+            "23": 67,
+            "24": 67,
+            "25": 67
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 56
+            },
+            {
+              "Line": 24,
+              "Offset": 18,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 67
+            }
+          ]
+        }
+      },
+      "App.Board/GridDimensionEqualityComparer": {
+        "System.Boolean App.Board/GridDimensionEqualityComparer::Equals(App.Board,App.Board)": {
+          "Lines": {
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0
+          },
+          "Branches": [
+            {
+              "Line": 122,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 122,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 19,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 124,
+              "Offset": 31,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 125,
+              "Offset": 58,
+              "EndOffset": 60,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 125,
+              "Offset": 58,
+              "EndOffset": 64,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 81,
+              "EndOffset": 83,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 81,
+              "EndOffset": 99,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Int32 App.Board/GridDimensionEqualityComparer::GetHashCode(App.Board)": {
+          "Lines": {
+            "130": 0,
+            "131": 0,
+            "132": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/Game.cs": {
+      "App.Game": {
+        "App.Board App.Game::GetBoard()": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Void App.Game::PrintBoard()": {
+          "Lines": {
+            "31": 1,
+            "32": 1,
+            "33": 1
+          },
+          "Branches": []
+        },
+        "System.Void App.Game::Run()": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 30,
+              "EndOffset": 3,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void App.Game::PlayTurn()": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean App.Game::IsOver()": {
+          "Lines": {
+            "54": 0,
+            "55": 0,
+            "56": 0
+          },
+          "Branches": [
+            {
+              "Line": 55,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 55,
+              "Offset": 12,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void App.Game::SwapTurn()": {
+          "Lines": {
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0
+          },
+          "Branches": [
+            {
+              "Line": 60,
+              "Offset": 28,
+              "EndOffset": 30,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 60,
+              "Offset": 28,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void App.Game::PrintResults()": {
+          "Lines": {
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0
+          },
+          "Branches": [
+            {
+              "Line": 67,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 21,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void App.Game::PrintWinner(App.Players.Player)": {
+          "Lines": {
+            "79": 0,
+            "80": 0,
+            "81": 0
+          },
+          "Branches": []
+        },
+        "System.Void App.Game::PrintDraw()": {
+          "Lines": {
+            "84": 0,
+            "85": 0,
+            "86": 0
+          },
+          "Branches": []
+        },
+        "System.Void App.Game::.ctor(App.Players.Player,App.Players.Player,App.Board/Dimensions)": {
+          "Lines": {
+            "14": 1,
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1,
+            "22": 1,
+            "23": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/Program.cs": {
+      "App.Program": {
+        "System.Void App.Program::Main(System.String[])": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 19,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 19,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void App.Program::RunCustomGame()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "App.Board/Dimensions App.Program::GetBoardSize()": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.String App.Program::GetPlayerOneMarker(System.Boolean)": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.String App.Program::GetPlayerTwoMarker()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": []
+        },
+        "System.Void App.Program::PrintLineBreak()": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "50": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/UI/EmojiValidator.cs": {
+      "App.UI.EmojiValidator": {
+        "System.Void App.UI.EmojiValidator::.cctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/UI/MessageHandler.cs": {
+      "App.UI.MessageHandler": {
+        "System.Void App.UI.MessageHandler::Print(App.UI.MessageHandler/IPrintable)": {
+          "Lines": {
+            "76": 21,
+            "77": 21,
+            "78": 21
+          },
+          "Branches": []
+        },
+        "System.Void App.UI.MessageHandler::PrintRequestForPlayerToInputMove(System.String,System.Int32)": {
+          "Lines": {
+            "81": 8,
+            "82": 8,
+            "83": 8
+          },
+          "Branches": []
+        },
+        "System.Void App.UI.MessageHandler::PrintDeclarationOfWinner(System.String)": {
+          "Lines": {
+            "86": 1,
+            "87": 1,
+            "88": 1
+          },
+          "Branches": []
+        },
+        "System.String App.UI.MessageHandler::ReadInput()": {
+          "Lines": {
+            "91": 15,
+            "92": 15,
+            "93": 15
+          },
+          "Branches": []
+        },
+        "System.Void App.UI.MessageHandler::PrintBoard(System.String[0...,0...],System.Collections.Generic.Dictionary`2<System.String,App.Players.Player>)": {
+          "Lines": {
+            "96": 5,
+            "97": 5,
+            "98": 5,
+            "100": 5,
+            "101": 44,
+            "102": 17,
+            "103": 17,
+            "104": 152,
+            "105": 59,
+            "106": 59,
+            "107": 59,
+            "109": 17,
+            "110": 17,
+            "111": 17,
+            "112": 17,
+            "113": 5,
+            "114": 5
+          },
+          "Branches": [
+            {
+              "Line": 101,
+              "Offset": 140,
+              "EndOffset": 27,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 17
+            },
+            {
+              "Line": 104,
+              "Offset": 72,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 59
+            },
+            {
+              "Line": 104,
+              "Offset": 72,
+              "EndOffset": 74,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 17
+            },
+            {
+              "Line": 109,
+              "Offset": 78,
+              "EndOffset": 80,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 12
+            },
+            {
+              "Line": 109,
+              "Offset": 78,
+              "EndOffset": 107,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 5
+            },
+            {
+              "Line": 101,
+              "Offset": 140,
+              "EndOffset": 142,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 5
+            }
+          ]
+        },
+        "System.String App.UI.MessageHandler::PrintRow(System.String[],System.Collections.Generic.Dictionary`2<System.String,App.Players.Player>)": {
+          "Lines": {
+            "117": 17,
+            "118": 17,
+            "119": 152,
+            "120": 59,
+            "121": 59,
+            "122": 59,
+            "124": 59,
+            "125": 59,
+            "127": 17,
+            "128": 17
+          },
+          "Branches": [
+            {
+              "Line": 119,
+              "Offset": 74,
+              "EndOffset": 11,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 59
+            },
+            {
+              "Line": 124,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 42
+            },
+            {
+              "Line": 124,
+              "Offset": 30,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 17
+            },
+            {
+              "Line": 119,
+              "Offset": 74,
+              "EndOffset": 76,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 17
+            }
+          ]
+        },
+        "System.String App.UI.MessageHandler::PrintRowBorder(System.Int32)": {
+          "Lines": {
+            "131": 12,
+            "132": 12,
+            "133": 12,
+            "134": 420,
+            "135": 198,
+            "136": 198,
+            "137": 198,
+            "138": 12,
+            "139": 12
+          },
+          "Branches": [
+            {
+              "Line": 134,
+              "Offset": 52,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 198
+            },
+            {
+              "Line": 134,
+              "Offset": 52,
+              "EndOffset": 54,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 12
+            }
+          ]
+        },
+        "System.String App.UI.MessageHandler::ExtractPlaceholderFromField(System.String,System.Collections.Generic.Dictionary`2<System.String,App.Players.Player>)": {
+          "Lines": {
+            "142": 59,
+            "143": 59,
+            "144": 59,
+            "145": 59,
+            "146": 59,
+            "147": 59
+          },
+          "Branches": [
+            {
+              "Line": 143,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 34
+            },
+            {
+              "Line": 143,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 7
+            },
+            {
+              "Line": 143,
+              "Offset": 17,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 27
+            },
+            {
+              "Line": 143,
+              "Offset": 8,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 25
+            }
+          ]
+        }
+      },
+      "App.UI.MessageHandler/DefaultBoardEmojiMarker": {
+        "System.String App.UI.MessageHandler/DefaultBoardEmojiMarker::get_code()": {
+          "Lines": {
+            "12": 78
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/DefaultBoardEmojiMarker App.UI.MessageHandler/DefaultBoardEmojiMarker::get_Cross()": {
+          "Lines": {
+            "16": 26
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/DefaultBoardEmojiMarker App.UI.MessageHandler/DefaultBoardEmojiMarker::get_Circle()": {
+          "Lines": {
+            "17": 13
+          },
+          "Branches": []
+        },
+        "System.Void App.UI.MessageHandler/DefaultBoardEmojiMarker::.ctor(System.String)": {
+          "Lines": {
+            "14": 156
+          },
+          "Branches": []
+        }
+      },
+      "App.UI.MessageHandler/StaticMessage": {
+        "System.String App.UI.MessageHandler/StaticMessage::GetMessage()": {
+          "Lines": {
+            "35": 18,
+            "36": 18,
+            "37": 18
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_Greeting()": {
+          "Lines": {
+            "39": 2
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_GameModes()": {
+          "Lines": {
+            "41": 2
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_RequestToChooseGameMode()": {
+          "Lines": {
+            "43": 2
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_RequestToChooseGameModeAfterInvalidInput()": {
+          "Lines": {
+            "44": 2
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_RequestToInputBoardSize()": {
+          "Lines": {
+            "45": 4
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_RequestToInputBoardSizeAfterInvalidInput()": {
+          "Lines": {
+            "46": 4
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_RequestForPlayerTwosMarker()": {
+          "Lines": {
+            "47": 3
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_NoticeForInvalidMarker()": {
+          "Lines": {
+            "48": 4
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_NoticeForInvalidPosition()": {
+          "Lines": {
+            "49": 1
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_NoticeIfPositionIsTaken()": {
+          "Lines": {
+            "50": 1
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/StaticMessage App.UI.MessageHandler/StaticMessage::get_DeclarationOfDraw()": {
+          "Lines": {
+            "51": 1
+          },
+          "Branches": []
+        },
+        "System.Void App.UI.MessageHandler/StaticMessage::.ctor(System.String)": {
+          "Lines": {
+            "29": 26,
+            "30": 26,
+            "31": 26,
+            "32": 26
+          },
+          "Branches": []
+        }
+      },
+      "App.UI.MessageHandler/DynamicMessage": {
+        "System.String App.UI.MessageHandler/DynamicMessage::GetMessage()": {
+          "Lines": {
+            "64": 3,
+            "65": 3,
+            "66": 3
+          },
+          "Branches": []
+        },
+        "App.UI.MessageHandler/DynamicMessage App.UI.MessageHandler/DynamicMessage::RequestForPlayerOnesMarker(System.Boolean)": {
+          "Lines": {
+            "69": 3,
+            "70": 3,
+            "71": 3,
+            "72": 3
+          },
+          "Branches": [
+            {
+              "Line": 70,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 70,
+              "Offset": 2,
+              "EndOffset": 11,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void App.UI.MessageHandler/DynamicMessage::.ctor(System.String)": {
+          "Lines": {
+            "58": 3,
+            "59": 3,
+            "60": 3,
+            "61": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/UI/Prompt.cs": {
+      "App.UI.Prompt": {
+        "System.Int32 App.UI.Prompt::GetGameMode()": {
+          "Lines": {
+            "8": 1,
+            "9": 1,
+            "10": 1,
+            "11": 1,
+            "12": 1,
+            "13": 1,
+            "14": 1
+          },
+          "Branches": []
+        },
+        "App.Board/Dimensions App.UI.Prompt::GetBoardSize()": {
+          "Lines": {
+            "17": 3,
+            "18": 3,
+            "19": 3,
+            "20": 3,
+            "21": 3,
+            "22": 3
+          },
+          "Branches": []
+        },
+        "App.Board/Dimensions App.UI.Prompt::DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(System.Int32)": {
+          "Lines": {
+            "25": 3,
+            "26": 3,
+            "27": 3,
+            "28": 3
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 3,
+              "EndOffset": 5,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 3
+            },
+            {
+              "Line": 26,
+              "Offset": 3,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String App.UI.Prompt::GetPlayerOneMarker(System.Boolean)": {
+          "Lines": {
+            "31": 2,
+            "32": 2,
+            "33": 2,
+            "34": 2,
+            "35": 2,
+            "36": 2
+          },
+          "Branches": []
+        },
+        "System.String App.UI.Prompt::DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(System.String)": {
+          "Lines": {
+            "39": 2,
+            "40": 2,
+            "41": 2
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 40,
+              "Offset": 7,
+              "EndOffset": 12,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.String App.UI.Prompt::GetPlayerTwoMarker()": {
+          "Lines": {
+            "44": 2,
+            "45": 2,
+            "46": 2,
+            "47": 2,
+            "48": 2,
+            "49": 2
+          },
+          "Branches": []
+        },
+        "System.String App.UI.Prompt::DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(System.String)": {
+          "Lines": {
+            "52": 2,
+            "53": 2,
+            "54": 2
+          },
+          "Branches": [
+            {
+              "Line": 53,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 53,
+              "Offset": 7,
+              "EndOffset": 12,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Int32 App.UI.Prompt::GetMove(System.String,App.Board)": {
+          "Lines": {
+            "57": 7,
+            "58": 7,
+            "59": 7,
+            "61": 7,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "67": 7,
+            "69": 7,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "75": 7,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "81": 7,
+            "82": 7
+          },
+          "Branches": [
+            {
+              "Line": 61,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 31,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 7
+            },
+            {
+              "Line": 69,
+              "Offset": 78,
+              "EndOffset": 80,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 78,
+              "EndOffset": 102,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 7
+            },
+            {
+              "Line": 75,
+              "Offset": 116,
+              "EndOffset": 118,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 116,
+              "EndOffset": 140,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 7
+            }
+          ]
+        },
+        "System.String App.UI.Prompt::GetString(App.UI.MessageHandler/StaticMessage,System.Func`2<System.String,System.Boolean>)": {
+          "Lines": {
+            "85": 4,
+            "86": 4,
+            "88": 4,
+            "89": 4,
+            "90": 4,
+            "93": 0,
+            "94": 0,
+            "95": 4
+          },
+          "Branches": [
+            {
+              "Line": 88,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 88,
+              "Offset": 16,
+              "EndOffset": 23,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Int32 App.UI.Prompt::GetInteger(App.UI.MessageHandler/StaticMessage,System.Func`2<System.String,System.Boolean>)": {
+          "Lines": {
+            "98": 4,
+            "99": 4,
+            "101": 4,
+            "102": 4,
+            "103": 4,
+            "106": 0,
+            "107": 0,
+            "108": 4
+          },
+          "Branches": [
+            {
+              "Line": 101,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 4
+            },
+            {
+              "Line": 101,
+              "Offset": 16,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Int32 App.UI.Prompt::ConvertStringToIntegerOutput(System.String)": {
+          "Lines": {
+            "111": 11,
+            "112": 11,
+            "113": 11
+          },
+          "Branches": [
+            {
+              "Line": 112,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 112,
+              "Offset": 9,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 11
+            }
+          ]
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/UI/Validator.cs": {
+      "App.UI.Validator": {
+        "System.Int32 App.UI.Validator::ParseIntFromInput(System.String)": {
+          "Lines": {
+            "10": 27,
+            "11": 27,
+            "12": 27
+          },
+          "Branches": [
+            {
+              "Line": 11,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 11,
+              "Offset": 9,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 22
+            }
+          ]
+        },
+        "System.Boolean App.UI.Validator::IsGameModeValid(System.String)": {
+          "Lines": {
+            "15": 5,
+            "16": 5,
+            "18": 5,
+            "19": 5
+          },
+          "Branches": []
+        },
+        "System.Boolean App.UI.Validator::IsBoardSizeValid(System.String)": {
+          "Lines": {
+            "22": 11,
+            "23": 11,
+            "24": 11,
+            "25": 11
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 10
+            },
+            {
+              "Line": 24,
+              "Offset": 19,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Boolean App.UI.Validator::IsMarkerValid(System.String)": {
+          "Lines": {
+            "28": 7,
+            "29": 7,
+            "30": 7
+          },
+          "Branches": [
+            {
+              "Line": 29,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 5
+            },
+            {
+              "Line": 29,
+              "Offset": 7,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Boolean App.UI.Validator::IsMarkerAnEmoji(System.String)": {
+          "Lines": {
+            "33": 5,
+            "34": 5,
+            "35": 5,
+            "36": 5
+          },
+          "Branches": []
+        },
+        "System.Boolean App.UI.Validator::IsInputAPositiveInteger(System.String)": {
+          "Lines": {
+            "39": 11,
+            "40": 11,
+            "41": 11
+          },
+          "Branches": []
+        },
+        "System.Boolean App.UI.Validator::IsMoveWithinBounds(App.Board,System.Int32)": {
+          "Lines": {
+            "44": 11,
+            "45": 11,
+            "46": 11
+          },
+          "Branches": []
+        },
+        "System.Boolean App.UI.Validator::IsMoveAvailable(App.Board,System.Int32)": {
+          "Lines": {
+            "49": 10,
+            "50": 10,
+            "51": 10
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/Players/Human.cs": {
+      "App.Players.Human": {
+        "System.Int32 App.Players.Human::Move(App.Game,System.String)": {
+          "Lines": {
+            "10": 1,
+            "11": 1,
+            "12": 1,
+            "13": 1
+          },
+          "Branches": []
+        },
+        "System.Void App.Players.Human::.ctor(System.String)": {
+          "Lines": {
+            "7": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/Users/mattyyao/Documents/CS312/c#/tic-tac-toe/App/Players/Player.cs": {
+      "App.Players.Player": {
+        "System.String App.Players.Player::GetMarker()": {
+          "Lines": {
+            "13": 1,
+            "14": 1,
+            "15": 1
+          },
+          "Branches": []
+        },
+        "System.Void App.Players.Player::.ctor(System.String)": {
+          "Lines": {
+            "7": 10,
+            "8": 10,
+            "9": 10,
+            "10": 10
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
