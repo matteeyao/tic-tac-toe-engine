@@ -7,7 +7,10 @@
         <PackageId>TicTacToe</PackageId>
         <Version>1.0.0</Version>
         <Authors>Matthew Yao</Authors>
+        <Owners>matteeyao</Owners>
         <Company>8th Light</Company>
+        <RepositoryUrl>https://github.com/matteeyao/tic-tac-toe/tree/main/App</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
