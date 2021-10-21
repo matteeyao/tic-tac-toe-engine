@@ -9,7 +9,8 @@
         <Authors>Matthew Yao</Authors>
         <Owners>matteeyao</Owners>
         <Company>8th Light</Company>
-        <RepositoryUrl>https://github.com/matteeyao/tic-tac-toe/tree/main/App</RepositoryUrl>
+        
+        <RepositoryUrl>https://github.com/matteeyao/tic-tac-toe.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
