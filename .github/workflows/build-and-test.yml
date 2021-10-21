@@ -38,7 +38,7 @@ jobs:
         
       # Test service
       - name: Run automated unit and integration tests
-        run: dotnet test Test/Test.csproj --configuration ${{ env.dotNetConfiguration }} --settings:./Test/CodeCoverage.runsettings 
+        run: dotnet test Test/Test.csproj 
           /p:CollectCoverage=true
           /p:CoverletOutput=TestResults/
           /p:CoverletOutputFormat=lcov
