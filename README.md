@@ -23,3 +23,5 @@
 ## Prerequisites
 
 There are no prerequisites for this project.
+
+[![build and test](https://github.com/matteeyao/tic-tac-toe/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/matteeyao/tic-tac-toe/actions/workflows/build-and-test.yml)
