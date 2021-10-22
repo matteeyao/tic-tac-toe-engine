@@ -10,13 +10,13 @@
 
   * `cd` into `App` dir
 
-  * run app w/ `dotnet run` 
+  * run app w/ `dotnet run`
 
 * To run tests:
 
   * `cd` into root dir
 
-  * run app w/ `dotnet test` 
+  * run app w/ `dotnet test`
 
 ## Dependencies
 
