@@ -27,6 +27,11 @@ namespace App
             return this.board;
         }
 
+        public virtual string GetTurn()
+        {
+            return this.turn;
+        }
+
         public void PrintBoard()
         {
             MessageHandler.PrintBoard(board.GetGrid(), this.players);
@@ -43,7 +48,7 @@ namespace App
             this.PrintResults();
         }
 
-        private void PlayTurn()
+        public void PlayTurn()
         {
             Player currentPlayer = this.players[this.turn];
             int pos = currentPlayer.Move(this, this.turn);
