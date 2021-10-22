@@ -2,6 +2,7 @@
 
 [![build and test](https://github.com/matteeyao/tic-tac-toe/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/matteeyao/tic-tac-toe/actions/workflows/build-and-test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/matteeyao/tic-tac-toe/badge.svg?branch=wip-feat-add-ci)](https://coveralls.io/github/matteeyao/tic-tac-toe?branch=wip-feat-add-ci)
+[![GitHub Super-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 ## Application Quick-start Commands
 
@@ -28,7 +29,3 @@
 ## Prerequisites
 
 There are no prerequisites for this project.
-
-## Resources
-
-[Code Coverage in GitHub with .NET Core](https://samlearnsazure.blog/2021/01/05/code-coverage-in-github-with-net-core/)
