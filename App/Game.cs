@@ -47,7 +47,7 @@ namespace App
             this.PrintResults();
         }
 
-        public void PlayTurn()
+        public void PlayTurn() 
         {
             Player currentPlayer = this.players[this.turn];
             int pos = currentPlayer.Move(this, this.turn);
@@ -63,7 +63,7 @@ namespace App
         {
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
-
+        
         public void PrintResults()
         {
             this.PrintBoard();

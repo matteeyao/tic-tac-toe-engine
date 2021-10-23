@@ -63,16 +63,16 @@ namespace Test
         {
             string[,] emptyBoard =
             {
-                { "1", "2", "3" }, 
-                { "4", "5", "6" }, 
+                { "1", "2", "3" },
+                { "4", "5", "6" },
                 { "7", "8", "9" }
             };
             Assert.AreEqual(emptyBoard, this.game.GetBoard().GetGrid());
             this.game.PlayTurn();
             string[,] boardWithMark =
             {
-                { Board.Marks.x.ToString(), "2", "3" }, 
-                { "4", "5", "6" }, 
+                { Board.Marks.x.ToString(), "2", "3" },
+                { "4", "5", "6" },
                 { "7", "8", "9" }
             };
             Assert.AreEqual(boardWithMark, this.game.GetBoard().GetGrid());
@@ -98,7 +98,7 @@ namespace Test
             StringWriter sw = CaptureOutput();
             string[,] board =
             {
-                {"1", "2", "3"}, 
+                {"1", "2", "3"},
                 {"4", "5", "6"},
                 {"7", "8", "9"}
             };
