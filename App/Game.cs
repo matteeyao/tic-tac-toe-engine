@@ -47,7 +47,7 @@ namespace App
             this.PrintResults();
         }
 
-        public void PlayTurn() 
+        public void PlayTurn()
         {
             Player currentPlayer = this.players[this.turn];
             int pos = currentPlayer.Move(this, this.turn);
