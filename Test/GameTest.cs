@@ -38,6 +38,7 @@ namespace Test
                 CallBase = true
             };
             player.Setup(x => x.Move(It.IsAny<Game>(), It.IsAny<string>())).Returns(pos);
+            player.Setup(x => x.GetMarker()).Returns(MessageHandler.DefaultBoardEmojiMarker.Cross.code);
             return player.Object;
         }
 
@@ -75,6 +76,51 @@ namespace Test
                 { "7", "8", "9" }
             };
             Assert.AreEqual(boardWithMark, this.game.GetBoard().GetGrid());
+        }
+
+        [Test]
+        public void ReturnsFalseWhenGameIsNotOver()
+        {
+            Assert.IsFalse(this.game.IsOver());
+        }
+
+        [Test]
+        public void SwapsTurnToNextPlayer()
+        {
+            Assert.AreEqual(Board.Marks.x.ToString(), this.game.GetTurn());
+            this.game.SwapTurn();
+            Assert.AreEqual(Board.Marks.o.ToString(), this.game.GetTurn());
+        }
+
+        [Test]
+        public void PrintsThreeByThreeBoard()
+        {
+            StringWriter sw = CaptureOutput();
+            string[,] board =
+            {
+                {"1", "2", "3"}, 
+                {"4", "5", "6"},
+                {"7", "8", "9"}
+            };
+            this.game.PrintResults();
+            string expected = " 01 | 02 | 03 \n--------------\n 04 | 05 | 06 \n--------------\n 07 | 08 | 09 ";
+            StringAssert.Contains(expected, sw.ToString());
+        }
+        
+        [Test]
+        public void PrintsWinnerOfGame()
+        {
+            StringWriter sw = CaptureOutput();
+            this.game.PrintWinner(this.playerOne);
+            StringAssert.Contains($"{MessageHandler.DefaultBoardEmojiMarker.Cross.code} won the game!", sw.ToString());
+        }
+        
+        [Test]
+        public void PrintsDrawOutcome()
+        {
+            StringWriter sw = CaptureOutput();
+            this.game.PrintDraw();
+            StringAssert.Contains("No one wins!", sw.ToString());
         }
     }
 }

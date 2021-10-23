@@ -54,17 +54,17 @@ namespace App
             this.board.SetField(pos, this.turn);
         }
 
-        private bool IsOver()
+        public bool IsOver()
         {
             return this.board.HasWinner() || this.board.IsTied();
         }
 
-        private void SwapTurn()
+        public void SwapTurn()
         {
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
 
-        private void PrintResults()
+        public void PrintResults()
         {
             this.PrintBoard();
             if (this.board.HasWinner())
@@ -78,12 +78,12 @@ namespace App
             }
         }
 
-        private void PrintWinner(Player player)
+        public void PrintWinner(Player player)
         {
             MessageHandler.PrintDeclarationOfWinner(player.GetMarker());
         }
 
-        private void PrintDraw()
+        public void PrintDraw()
         {
             MessageHandler.Print(MessageHandler.StaticMessage.DeclarationOfDraw);
         }
