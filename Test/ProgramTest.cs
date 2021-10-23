@@ -1,7 +1,9 @@
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using NUnit.Framework;
 
 namespace Test
 {
+    [TestFixture]
     public class ProgramTest
     {
         [SetUp]
@@ -10,7 +12,7 @@ namespace Test
         }
 
         [Test]
-        public void Test1()
+        public void RunsInstanceOfGame()
         {
             Assert.Pass();
         }

@@ -16,7 +16,7 @@ namespace Test
         private Player playerTwo;
         private Game game;
         
-        public StringWriter CaptureOutput()
+        private StringWriter CaptureOutput()
         {
             StringWriter sw = new StringWriter();
             Console.SetOut(sw);
