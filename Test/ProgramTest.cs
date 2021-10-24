@@ -1,3 +1,4 @@
+using App;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using NUnit.Framework;
 
@@ -14,6 +15,7 @@ namespace Test
         [Test]
         public void RunsInstanceOfGame()
         {
+            TicTacToe.Run();
             Assert.Pass();
         }
     }
