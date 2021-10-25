@@ -1,5 +1,6 @@
 using App;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Moq;
 using NUnit.Framework;
 
 namespace Test
@@ -15,7 +16,6 @@ namespace Test
         [Test]
         public void RunsInstanceOfGame()
         {
-            TicTacToe.Run();
             Assert.Pass();
         }
     }

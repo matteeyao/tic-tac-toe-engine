@@ -4,7 +4,7 @@ using App.UI;
 
 namespace App
 {
-    public static class TicTacToe
+    public static class CommandLine
     {
         public static void Run()
         {

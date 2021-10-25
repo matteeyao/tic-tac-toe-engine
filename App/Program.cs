@@ -8,7 +8,7 @@ namespace App
     {
         static void Main(string[] args)
         {
-            TicTacToe.Run();
+            CommandLine.Run();
         }
     }
 }

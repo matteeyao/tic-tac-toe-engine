@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Test
 {
     [TestFixture]
-    public class TicTacToeTest
+    public class CommandLineTest
     {
         private StringWriter CaptureOutput()
         {
@@ -20,7 +20,7 @@ namespace Test
         public void ReturnsAThreeByThreeBoardSize()
         {
             TestHelper.TestHelper.SetInput("3\n");
-            Board.Dimensions boardSize = TicTacToe.GetBoardSize();
+            Board.Dimensions boardSize = CommandLine.GetBoardSize();
             Assert.AreEqual(Board.Dimensions.ThreeByThree, boardSize);
         }
         
@@ -29,7 +29,7 @@ namespace Test
         {
             TestHelper.TestHelper.SetInput($"{MessageHandler.DefaultBoardEmojiMarker.Cross.code}\n");
             string expected = MessageHandler.DefaultBoardEmojiMarker.Cross.code;
-            string actual = TicTacToe.GetPlayerOneMarker(true);
+            string actual = CommandLine.GetPlayerOneMarker(true);
             Assert.AreEqual(expected, actual);
         }
         
@@ -38,7 +38,7 @@ namespace Test
         {
             TestHelper.TestHelper.SetInput($"{MessageHandler.DefaultBoardEmojiMarker.Circle.code}\n");
             string expected = MessageHandler.DefaultBoardEmojiMarker.Circle.code;
-            string actual = TicTacToe.GetPlayerTwoMarker();
+            string actual = CommandLine.GetPlayerTwoMarker();
             Assert.AreEqual(expected, actual);
         }
         
@@ -46,7 +46,7 @@ namespace Test
         public void PrintsLineBreak()
         {
             StringWriter sw = CaptureOutput();
-            TicTacToe.PrintLineBreak();
+            CommandLine.PrintLineBreak();
             string expected = "\n";
             StringAssert.Contains(expected, sw.ToString());
         }
