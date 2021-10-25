@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using App;
 using App.UI;
+using Moq;
 using NUnit.Framework;
 
 namespace Test
