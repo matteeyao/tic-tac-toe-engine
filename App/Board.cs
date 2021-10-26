@@ -115,24 +115,23 @@ namespace App
             return true;
         }
 
-        private sealed class GridDimensionEqualityComparer : IEqualityComparer<Board>
+        protected bool Equals(Board other)
         {
-            public bool Equals(Board x, Board y)
-            {
-                if (ReferenceEquals(x, y)) return true;
-                if (ReferenceEquals(x, null)) return false;
-                if (ReferenceEquals(y, null)) return false;
-                if (x.GetType() != y.GetType()) return false;
-                return Equals(x.grid, y.grid) && x.dimension == y.dimension;
-            }
-
-            public int GetHashCode(Board obj)
-            {
-                return HashCode.Combine(obj.grid, obj.dimension);
-            }
+            return dimension == other.dimension && Enumerable.SequenceEqual(grid, other.grid);
         }
 
-        public static IEqualityComparer<Board> GridDimensionComparer { get; } = new GridDimensionEqualityComparer();
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Board) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(dimension, grid);
+        }
 
         private static string[] GenerateGrid(int dimension)
         {
