@@ -20,7 +20,7 @@ namespace Test.UI
             this.threeByThreeBoard = new Board();
             this.fourByFourBoard = new Board(Board.Dimensions.FourByFour);
             this.fiveByFiveBoard = new Board(Board.Dimensions.FiveByFive);
-            this.crossMarker =  MessageHandler.DefaultBoardEmojiMarker.Cross.code;
+            this.crossMarker = MessageHandler.DefaultBoardEmojiMarker.Cross.code;
         }
         
         [Test]

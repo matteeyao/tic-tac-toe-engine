@@ -15,7 +15,7 @@ namespace Test.UI
         {
             Assert.IsTrue(Validator.IsGameModeValid("1"));
         }
-                
+        
         [Test]
         public void ReturnsFalseIfGameModeIsInvalid()
         {
@@ -54,7 +54,7 @@ namespace Test.UI
             Assert.IsFalse(Validator.IsMarkerValid("x"));
             Assert.IsFalse(Validator.IsMarkerValid("o"));
         }
-
+        
         [Test]
         public void ReturnsTrueIfInputCanBeParsedIntoAPositiveInteger()
         {
@@ -68,14 +68,14 @@ namespace Test.UI
             Assert.IsFalse(Validator.IsInputAPositiveInteger("hello"));
             Assert.IsFalse(Validator.IsInputAPositiveInteger(""));
         }
-
+        
         private Board GetEmptyThreeByThreeBoard()
         {
             var mock = new Mock<Board>()
             {
                 CallBase = true
             };
-            int boardLength = (int) Math.Pow((int) Board.Dimensions.ThreeByThree, 2);
+            int boardLength = (int)Math.Pow((int)Board.Dimensions.ThreeByThree, 2);
             mock.Setup(x => x.IsValidField(It.IsIn(Enumerable.Range(0, boardLength))))
                 .Returns(true);
             mock.Setup(x => x.IsEmptyField(It.IsIn(Enumerable.Range(0, boardLength))))
@@ -89,6 +89,7 @@ namespace Test.UI
             {
                 CallBase = true
             };
+            
             int boardLength = (int) Math.Pow((int) Board.Dimensions.ThreeByThree, 2);
             mock.Setup(x => x.IsValidField(It.IsIn(Enumerable.Range(0, boardLength))))
                 .Returns(true);
@@ -96,7 +97,7 @@ namespace Test.UI
                 .Returns(false);
             return mock.Object;
         }
-
+        
         [Test]
         public void ReturnsTrueIfMoveIsWithinBounds()
         {
