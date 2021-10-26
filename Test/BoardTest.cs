@@ -11,7 +11,7 @@ namespace Test
         [SetUp]
         public void Setup()
         {
-            board = new Board(Board.Dimensions.ThreeByThree);
+            this.board = new Board(Board.Dimensions.ThreeByThree);
         }
 
         [Test]
@@ -40,6 +40,18 @@ namespace Test
             
             board.SetField(4, "x");
             Assert.AreEqual(false, board.IsEmptyField(4));
+        }
+
+        [Test]
+        public void ReturnsTrueIfBoardsAreTheSame()
+        {
+            Assert.IsTrue(this.board.Equals(this.board));
+        }
+        
+        [Test]
+        public void ReturnsFalseIfBoardsAreNotTheSame()
+        {
+            Assert.IsFalse(this.board.Equals(new Board()));
         }
 
         [Test]
