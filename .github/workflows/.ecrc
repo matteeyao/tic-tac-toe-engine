@@ -9,11 +9,11 @@
   "PassedFiles": [],
   "Disable": {
     // set these options to true to disable specific checks
-    "EndOfLine": false,
-    "Indentation": false,
-    "IndentSize": false,
-    "InsertFinalNewline": false,
+    "EndOfLine": true,
+    "Indentation": true,
+    "IndentSize": true,
+    "InsertFinalNewline": true,
     "TrimTrailingWhitespace": true,
-    "MaxLineLength": false
+    "MaxLineLength": true
   }
 }
