@@ -11,7 +11,7 @@ namespace Test
         [SetUp]
         public void Setup()
         {
-            board = new Board(Board.Dimensions.ThreeByThree);
+            this.board = new Board(Board.Dimensions.ThreeByThree);
         }
 
         [Test]
@@ -43,10 +43,41 @@ namespace Test
         }
 
         [Test]
+        public void IfBoardReferencesAreEqual_ReturnsTrue()
+        {
+            Assert.IsTrue(this.board.Equals(this.board));
+        }
+        
+        [Test]
+        public void IfAnyBoardReferenceIsNull_ReturnsFalse()
+        {
+            Assert.IsFalse(this.board.Equals(null));
+        }
+        
+        [Test]
+        public void IfAnyObjectTypeIsNotBoard_ReturnsFalse()
+        {
+            Assert.IsFalse(new string[3].Equals(this.board));
+            Assert.IsFalse(this.board.Equals(new string[3]));
+        }
+                
+        [Test]
+        public void IfBoardsAreEqual_ReturnsTrue()
+        {
+            Assert.IsTrue(this.board.Equals(new Board()));
+        }
+        
+        [Test]
+        public void IfBoardsAreNotEqual_ReturnsFalse()
+        {
+            Assert.IsFalse(this.board.Equals(new Board(Board.Dimensions.FourByFour)));
+        }
+
+        [Test]
         public void ReturnsDuplicateOfCurrentBoard()
         {
             Board dupedBoard = board.Duplicate();
-            Assert.AreNotEqual(dupedBoard, board);
+            Assert.AreNotEqual(dupedBoard.GetHashCode(), board.GetHashCode());
         }
 
         [Test]

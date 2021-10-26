@@ -39,7 +39,6 @@ namespace App
                 this.PlayTurn();
                 this.SwapTurn();
             }
-            
             this.PrintResults();
         }
 
@@ -57,10 +56,9 @@ namespace App
 
         private void SwapTurn()
         {
-            this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? 
-                Board.Marks.o.ToString() : Board.Marks.x.ToString());
+            this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
-
+        
         private void PrintResults()
         {
             this.PrintBoard();
