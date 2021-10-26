@@ -27,11 +27,6 @@ namespace App
             return this.board;
         }
 
-        public virtual string GetTurn()
-        {
-            return this.turn;
-        }
-
         public void PrintBoard()
         {
             MessageHandler.PrintBoard(board.GetGrid(), this.players);
@@ -47,24 +42,24 @@ namespace App
             this.PrintResults();
         }
 
-        public void PlayTurn()
+        private void PlayTurn()
         {
             Player currentPlayer = this.players[this.turn];
             int pos = currentPlayer.Move(this, this.turn);
             this.board.SetField(pos, this.turn);
         }
 
-        public bool IsOver()
+        private bool IsOver()
         {
             return this.board.HasWinner() || this.board.IsTied();
         }
 
-        public void SwapTurn()
+        private void SwapTurn()
         {
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
         
-        public void PrintResults()
+        private void PrintResults()
         {
             this.PrintBoard();
             if (this.board.HasWinner())
@@ -78,12 +73,12 @@ namespace App
             }
         }
 
-        public void PrintWinner(Player player)
+        private void PrintWinner(Player player)
         {
             MessageHandler.PrintDeclarationOfWinner(player.GetMarker());
         }
 
-        public void PrintDraw()
+        private void PrintDraw()
         {
             MessageHandler.Print(MessageHandler.StaticMessage.DeclarationOfDraw);
         }
