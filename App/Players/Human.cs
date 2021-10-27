@@ -1,3 +1,5 @@
+using App.Client;
+using App.Client.CLI;
 using App.UI;
 
 namespace App.Players
@@ -6,9 +8,9 @@ namespace App.Players
     {
         public Human(string marker) : base(marker) { }
 
-        public override int Move(Game game, string turnDesignatedMark)
+        public override int Move(IClient client, Game game, string turnDesignatedMark)
         {
-            game.PrintBoard();
+            client.Board();
             return Prompt.GetMove(this.GetMarker(), game.GetBoard());
         }
     }

@@ -1,6 +1,8 @@
 using App;
+using App.Client;
+using App.Client.CLI;
 using App.Players;
-using App.UI;
+using App.UI.Message;
 using Moq;
 using NUnit.Framework;
 
@@ -9,13 +11,15 @@ namespace Test.Players
     [TestFixture]
     public class PlayerTest
     {
+        private IClient client;
         private string marker;
         private Player player;
         
         [SetUp]
         public void Init()
         {
-            this.marker = MessageHandler.DefaultBoardEmojiMarker.Cross.code;
+            this.client = Mock.Of<IClient>();
+            this.marker = DefaultBoardEmojiMarker.Cross.code;
             this.player = SetUpMockPlayer();
         }
 
@@ -25,21 +29,21 @@ namespace Test.Players
             {
                 CallBase = true
             };
-            player.Setup(x => x.Move(It.IsAny<Game>(), It.IsAny<string>())).Returns(0);
+            player.Setup(x => x.Move(It.IsAny<IClient>(), It.IsAny<Game>(), It.IsAny<string>())).Returns(0);
             return player.Object;
         }
 
         [Test]
         public void ReturnsMarker()
         {
-            Assert.AreEqual(MessageHandler.DefaultBoardEmojiMarker.Cross.code, this.player.GetMarker());
+            Assert.AreEqual(DefaultBoardEmojiMarker.Cross.code, this.player.GetMarker());
         }
         
         [Test]
         public void ReturnsPosition()
         {
             Game game = new Game(SetUpMockPlayer(), SetUpMockPlayer(), Board.Dimensions.ThreeByThree);
-            Assert.AreEqual(0, this.player.Move(game, Board.Marks.x.ToString()));
+            Assert.AreEqual(0, this.player.Move(client, game, Board.Marks.x.ToString()));
         }
     }
 }

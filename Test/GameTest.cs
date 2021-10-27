@@ -1,9 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using App;
+using App.Client;
 using App.Players;
-using App.UI;
+using App.UI.Message;
 using Moq;
 using NUnit.Framework;
 
@@ -26,8 +26,8 @@ namespace Test
         [SetUp]
         public void Init()
         {
-            playerOne = SetUpNewTestPlayer(MessageHandler.DefaultBoardEmojiMarker.Cross.code, 0);
-            playerTwo = SetUpNewTestPlayer(MessageHandler.DefaultBoardEmojiMarker.Circle.code, 1);
+            playerOne = SetUpNewTestPlayer(DefaultBoardEmojiMarker.Cross.code, 0);
+            playerTwo = SetUpNewTestPlayer(DefaultBoardEmojiMarker.Circle.code, 1);
             game = new Game(playerOne, playerTwo, Board.Dimensions.ThreeByThree);
         }
 
@@ -38,6 +38,7 @@ namespace Test
                 CallBase = true
             };
             player.Setup(x => x.Move(
+                It.IsAny<IClient>(),
                 It.IsAny<Game>(),
                 It.IsIn(Board.Marks.o.ToString(),
                     Board.Marks.x.ToString()))
@@ -78,7 +79,7 @@ namespace Test
         public void IfGameEndsInDraw_PrintsDrawResult()
         {
             StringWriter sw = CaptureOutput();
-            SetUpGameWithTiedEndgame().Run();
+            SetUpGameWithTiedEndgame().Run(Mock.Of<IClient>());
             StringAssert.Contains("No one wins!", sw.ToString());
         }
         
@@ -94,8 +95,8 @@ namespace Test
         public void IfGameEndsWithAWinner_PrintsWinnerResult()
         {
             StringWriter sw = CaptureOutput();
-            SetUpGameWithAnEndgameThatHasAWinner().Run();
-            StringAssert.Contains($"{MessageHandler.DefaultBoardEmojiMarker.Cross.code} won the game!", sw.ToString());
+            SetUpGameWithAnEndgameThatHasAWinner().Run(Mock.Of<IClient>());
+            StringAssert.Contains($"{DefaultBoardEmojiMarker.Cross.code} won the game!", sw.ToString());
         }
     }
 }

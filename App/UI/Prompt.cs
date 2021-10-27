@@ -1,4 +1,6 @@
 using System;
+using App.Client.CLI;
+using App.UI.Message;
 
 namespace App.UI
 {
@@ -6,17 +8,17 @@ namespace App.UI
     {
         public static int GetGameMode()
         {
-            MessageHandler.Print(MessageHandler.StaticMessage.Greeting);
-            MessageHandler.Print(MessageHandler.StaticMessage.GameModes);
-            MessageHandler.Print(MessageHandler.StaticMessage.RequestToChooseGameMode);
-            return GetInteger(MessageHandler.StaticMessage.RequestToChooseGameModeAfterInvalidInput,
+            MessageHandler.Print(StaticMessage.Greeting);
+            MessageHandler.Print(StaticMessage.GameModes);
+            MessageHandler.Print(StaticMessage.RequestToChooseGameMode);
+            return GetInteger(StaticMessage.RequestToChooseGameModeAfterInvalidInput,
                 Validator.IsGameModeValid);
         }
 
         public static Board.Dimensions GetBoardSize()
         {
-            MessageHandler.Print(MessageHandler.StaticMessage.RequestToInputBoardSize);
-            int boardSize = GetInteger(MessageHandler.StaticMessage.RequestToInputBoardSizeAfterInvalidInput,
+            MessageHandler.Print(StaticMessage.RequestToInputBoardSize);
+            int boardSize = GetInteger(StaticMessage.RequestToInputBoardSizeAfterInvalidInput,
                 Validator.IsBoardSizeValid);
             return DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(boardSize);
         }
@@ -29,38 +31,38 @@ namespace App.UI
         
         public static string GetPlayerOneMarker(bool isOpponentComputer = true)
         {
-            MessageHandler.Print(MessageHandler.DynamicMessage.RequestForPlayerOnesMarker(isOpponentComputer));
-            string marker = GetString(MessageHandler.StaticMessage.NoticeForInvalidMarker,
+            MessageHandler.Print(DynamicMessage.RequestForPlayerOnesMarker(isOpponentComputer));
+            string marker = GetString(StaticMessage.NoticeForInvalidMarker,
                 Validator.IsMarkerValid);
             return DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(marker);
         }
 
         private static string DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(string marker)
         {
-            return marker.Length == 0 ? MessageHandler.DefaultBoardEmojiMarker.Cross.code : marker;
+            return marker.Length == 0 ? DefaultBoardEmojiMarker.Cross.code : marker;
         }
         
         public static string GetPlayerTwoMarker()
         {
-            MessageHandler.Print(MessageHandler.StaticMessage.RequestForPlayerTwosMarker);
-            string marker = GetString(MessageHandler.StaticMessage.NoticeForInvalidMarker,
+            MessageHandler.Print(StaticMessage.RequestForPlayerTwosMarker);
+            string marker = GetString(StaticMessage.NoticeForInvalidMarker,
                 Validator.IsMarkerValid);
             return DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(marker);
         }
         
         private static string DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(string marker)
         {
-            return marker.Length == 0 ? MessageHandler.DefaultBoardEmojiMarker.Circle.code : marker;
+            return marker.Length == 0 ? DefaultBoardEmojiMarker.Circle.code : marker;
         }
 
         public static int GetMove(string mark, Board board)
         {
-            MessageHandler.PrintRequestForPlayerToInputMove(mark, board.GetDimension());
-            string input = MessageHandler.ReadInput();
+            MessageHandler.Print(DynamicMessage.RequestForPlayerToInputMove(mark, board.GetDimension()));
+            string input = MessageHandler.Read();
             
             if (!Validator.IsInputAPositiveInteger(input))
             {
-                MessageHandler.Print(MessageHandler.StaticMessage.NoticeForInvalidPosition);
+                MessageHandler.Print(StaticMessage.NoticeForInvalidPosition);
                 return GetMove(mark, board);
             }
             
@@ -68,22 +70,22 @@ namespace App.UI
             
             if (!Validator.IsMoveWithinBounds(board, index))
             {
-                MessageHandler.Print(MessageHandler.StaticMessage.NoticeForInvalidPosition);
+                MessageHandler.Print(StaticMessage.NoticeForInvalidPosition);
                 return GetMove(mark, board);
             }
 
             if (!Validator.IsMoveAvailable(board, index))
             {
-                MessageHandler.Print(MessageHandler.StaticMessage.NoticeIfPositionIsTaken);
+                MessageHandler.Print(StaticMessage.NoticeIfPositionIsTaken);
                 return GetMove(mark, board);
             }
 
             return index;
         }
 
-        private static string GetString(MessageHandler.StaticMessage message, Func<string, bool> validator)
+        private static string GetString(StaticMessage message, Func<string, bool> validator)
         {
-            string input = MessageHandler.ReadInput();
+            string input = MessageHandler.Read();
             
             if (validator(input))
             {
@@ -94,9 +96,9 @@ namespace App.UI
             return GetString(message, validator);
         }
 
-        private static int GetInteger(MessageHandler.StaticMessage message, Func<string, bool> validator)
+        private static int GetInteger(StaticMessage message, Func<string, bool> validator)
         {
-            string input = MessageHandler.ReadInput();
+            string input = MessageHandler.Read();
             
             if (validator(input))
             {

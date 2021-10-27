@@ -1,11 +1,11 @@
 using App;
+using App.Client;
 using App.UI;
+using App.UI.Message;
 using NUnit.Framework;
 
-namespace Test.UI
+namespace Test.Client
 {
-    using TestHelper;
-    
     [TestFixture]
     public class PromptTest
     {
@@ -20,13 +20,13 @@ namespace Test.UI
             this.threeByThreeBoard = new Board();
             this.fourByFourBoard = new Board(Board.Dimensions.FourByFour);
             this.fiveByFiveBoard = new Board(Board.Dimensions.FiveByFive);
-            this.crossMarker = MessageHandler.DefaultBoardEmojiMarker.Cross.code;
+            this.crossMarker = DefaultBoardEmojiMarker.Cross.code;
         }
         
         [Test]
         public void ReturnsAGameMode()
         {
-            TestHelper.SetInput("1\n");
+            TestHelper.TestHelper.SetInput("1\n");
             int gameMode = Prompt.GetGameMode();
             Assert.AreEqual(1, gameMode);
         }
@@ -34,7 +34,7 @@ namespace Test.UI
         [Test]
         public void ReturnsAThreeByThreeBoardSize()
         {
-            TestHelper.SetInput("3\n");
+            TestHelper.TestHelper.SetInput("3\n");
             Board.Dimensions boardSize = Prompt.GetBoardSize();
             Assert.AreEqual(Board.Dimensions.ThreeByThree, boardSize);
         }
@@ -42,7 +42,7 @@ namespace Test.UI
         [Test]
         public void ReturnsAFourByFourBoardSize()
         {
-            TestHelper.SetInput("4\n");
+            TestHelper.TestHelper.SetInput("4\n");
             Board.Dimensions boardSize = Prompt.GetBoardSize();
             Assert.AreEqual(Board.Dimensions.FourByFour, boardSize);
         }
@@ -50,7 +50,7 @@ namespace Test.UI
         [Test]
         public void ReturnsAFiveByFiveBoardSize()
         {
-            TestHelper.SetInput("5\n");
+            TestHelper.TestHelper.SetInput("5\n");
             Board.Dimensions boardSize = Prompt.GetBoardSize();
             Assert.AreEqual(Board.Dimensions.FiveByFive, boardSize);
         }
@@ -58,8 +58,8 @@ namespace Test.UI
         [Test]
         public void ReturnsPlayerOneMaker()
         {
-            TestHelper.SetInput($"{MessageHandler.DefaultBoardEmojiMarker.Cross.code}\n");
-            string expected = MessageHandler.DefaultBoardEmojiMarker.Cross.code;
+            TestHelper.TestHelper.SetInput($"{DefaultBoardEmojiMarker.Cross.code}\n");
+            string expected = DefaultBoardEmojiMarker.Cross.code;
             string actual = Prompt.GetPlayerOneMarker();
             Assert.AreEqual(expected, actual);
         }
@@ -67,8 +67,8 @@ namespace Test.UI
         [Test]
         public void IfInputIsEmpty_ReturnsPlayerOneMaker()
         {
-            TestHelper.SetInput("\n");
-            string expected = MessageHandler.DefaultBoardEmojiMarker.Cross.code;
+            TestHelper.TestHelper.SetInput("\n");
+            string expected = DefaultBoardEmojiMarker.Cross.code;
             string actual = Prompt.GetPlayerOneMarker();
             Assert.AreEqual(expected, actual);
         }
@@ -76,8 +76,8 @@ namespace Test.UI
         [Test]
         public void ReturnsPlayerTwoMaker()
         {
-            TestHelper.SetInput($"{MessageHandler.DefaultBoardEmojiMarker.Circle.code}\n");
-            string expected = MessageHandler.DefaultBoardEmojiMarker.Circle.code;
+            TestHelper.TestHelper.SetInput($"{DefaultBoardEmojiMarker.Circle.code}\n");
+            string expected = DefaultBoardEmojiMarker.Circle.code;
             string actual = Prompt.GetPlayerTwoMarker();
             Assert.AreEqual(expected, actual);
         }
@@ -85,8 +85,8 @@ namespace Test.UI
         [Test]
         public void IfInputIsEmpty_ReturnsPlayerTwoMaker()
         {
-            TestHelper.SetInput("\n");
-            string expected = MessageHandler.DefaultBoardEmojiMarker.Circle.code;
+            TestHelper.TestHelper.SetInput("\n");
+            string expected = DefaultBoardEmojiMarker.Circle.code;
             string actual = Prompt.GetPlayerTwoMarker();
             Assert.AreEqual(expected, actual);
         }
@@ -94,7 +94,7 @@ namespace Test.UI
         [Test]
         public void IfInputIsOne_AndBoardIsThreeByThree_ReturnsZero()
         {
-            TestHelper.SetInput("1\n");
+            TestHelper.TestHelper.SetInput("1\n");
             int index = Prompt.GetMove(crossMarker, threeByThreeBoard);
             Assert.AreEqual(0, index);
         }
@@ -102,7 +102,7 @@ namespace Test.UI
         [Test]
         public void IfInputIsNine_AndBoardIsThreeByThree_ReturnsEight()
         {
-            TestHelper.SetInput("9\n");
+            TestHelper.TestHelper.SetInput("9\n");
             int index = Prompt.GetMove(crossMarker, threeByThreeBoard);
             Assert.AreEqual(8, index);
         }
@@ -110,7 +110,7 @@ namespace Test.UI
         [Test]
         public void IfInputIsOne_AndBoardIsFourByFour_ReturnsZero()
         {
-            TestHelper.SetInput("1\n");
+            TestHelper.TestHelper.SetInput("1\n");
             int index = Prompt.GetMove(crossMarker, fourByFourBoard);
             Assert.AreEqual(0, index);
         }
@@ -118,7 +118,7 @@ namespace Test.UI
         [Test]
         public void IfInputIsSixteen_AndBoardIsFourByFour_ReturnsFifteen()
         {
-            TestHelper.SetInput("16\n");
+            TestHelper.TestHelper.SetInput("16\n");
             int index = Prompt.GetMove(crossMarker, fourByFourBoard);
             Assert.AreEqual(15, index);
         }
@@ -126,7 +126,7 @@ namespace Test.UI
         [Test]
         public void IfInputIsOne_AndBoardIsFiveByFive_ReturnsZero()
         {
-            TestHelper.SetInput("1\n");
+            TestHelper.TestHelper.SetInput("1\n");
             int index = Prompt.GetMove(crossMarker, fiveByFiveBoard);
             Assert.AreEqual(0, index);
         }
@@ -134,7 +134,7 @@ namespace Test.UI
         [Test]
         public void IfInputIsTwentyFive_AndBoardIsFiveByFive_ReturnsTwentyFour()
         {
-            TestHelper.SetInput("25\n");
+            TestHelper.TestHelper.SetInput("25\n");
             int index = Prompt.GetMove(crossMarker, fiveByFiveBoard);
             Assert.AreEqual(24, index);
         }

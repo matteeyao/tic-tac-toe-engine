@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using App;
 using App.UI;
+using App.UI.Message;
 using Moq;
 using NUnit.Framework;
 
@@ -45,7 +46,7 @@ namespace Test.UI
         [Test]
         public void ReturnsTrueIfMarkerIsValid()
         {
-            Assert.IsTrue(Validator.IsMarkerValid(MessageHandler.DefaultBoardEmojiMarker.Circle.code));
+            Assert.IsTrue(Validator.IsMarkerValid(DefaultBoardEmojiMarker.Circle.code));
         }
         
         [Test]

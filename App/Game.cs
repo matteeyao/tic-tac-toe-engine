@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using App.Client;
+using App.Client.CLI;
 using App.Players;
 using App.UI;
+using App.UI.Message;
 
 namespace App
 {
@@ -29,23 +32,23 @@ namespace App
 
         public void PrintBoard()
         {
-            MessageHandler.PrintBoard(board.GetGrid(), this.players);
+            MessageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
         }
 
-        public void Run()
+        public void Run(IClient client)
         {
             while (!this.IsOver())
             {
-                this.PlayTurn();
+                this.PlayTurn(client);
                 this.SwapTurn();
             }
-            this.PrintResults();
+            this.PrintResults(client);
         }
 
-        private void PlayTurn()
+        private void PlayTurn(IClient client)
         {
             Player currentPlayer = this.players[this.turn];
-            int pos = currentPlayer.Move(this, this.turn);
+            int pos = currentPlayer.Move(client, this, this.turn);
             this.board.SetField(pos, this.turn);
         }
 
@@ -59,13 +62,13 @@ namespace App
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
         
-        private void PrintResults()
+        private void PrintResults(IClient client)
         {
-            this.PrintBoard();
+            client.Board();
             if (this.board.HasWinner())
             {
-                Player WinningPlayer = this.players[this.board.Winner()];
-                PrintWinner(WinningPlayer);
+                Player winningPlayer = this.players[this.board.Winner()];
+                PrintWinner(winningPlayer);
             }
             else
             {
@@ -75,12 +78,12 @@ namespace App
 
         private void PrintWinner(Player player)
         {
-            MessageHandler.PrintDeclarationOfWinner(player.GetMarker());
+            MessageHandler.Print(DynamicMessage.DeclarationOfWinner(player.GetMarker()));
         }
 
         private void PrintDraw()
         {
-            MessageHandler.Print(MessageHandler.StaticMessage.DeclarationOfDraw);
+            MessageHandler.Print(StaticMessage.DeclarationOfDraw);
         }
     }
 }
