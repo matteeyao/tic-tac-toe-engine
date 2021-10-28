@@ -1,6 +1,4 @@
 ﻿using System;
-using App.Players;
-using App.UI;
 
 namespace App
 {
@@ -8,7 +6,8 @@ namespace App
     {
         static void Main(string[] args)
         {
-            CommandLine.Run();
+            TicTacToe ticTacToe = new TicTacToe();
+            ticTacToe.Run();
         }
     }
 }

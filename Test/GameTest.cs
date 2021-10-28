@@ -1,9 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using App;
+using App.Client;
+using App.Client.CLI;
 using App.Players;
 using App.UI;
+using App.UI.Message;
 using Moq;
 using NUnit.Framework;
 
@@ -12,6 +14,7 @@ namespace Test
     [TestFixture]
     public class GameTest
     {
+        private IUserInterfaceable client;
         private Player playerOne;
         private Player playerTwo;
         private Game game;
@@ -26,9 +29,20 @@ namespace Test
         [SetUp]
         public void Init()
         {
-            playerOne = SetUpNewTestPlayer(MessageHandler.DefaultBoardEmojiMarker.Cross.code, 0);
-            playerTwo = SetUpNewTestPlayer(MessageHandler.DefaultBoardEmojiMarker.Circle.code, 1);
+            client = SetupClient();
+            playerOne = SetUpNewTestPlayer(DefaultBoardEmojiMarker.Cross.code, 0);
+            playerTwo = SetUpNewTestPlayer(DefaultBoardEmojiMarker.Circle.code, 1);
             game = new Game(playerOne, playerTwo, Board.Dimensions.ThreeByThree);
+        }
+        
+        private IUserInterfaceable SetupClient()
+        {
+            Mock<IUserInterfaceable> mock = new Mock<IUserInterfaceable>();
+            mock.Setup(m => m.GetMessageHandler())
+                .Returns(new CommandLineInterface.MessageHandler());
+            mock.Setup(m => m.GetPrompt())
+                .Returns(new Prompt(new CommandLineInterface.MessageHandler()));
+            return mock.Object;
         }
 
         private Player SetUpNewTestPlayer(string defaultBoardEmojiMarker, int pos)
@@ -38,6 +52,7 @@ namespace Test
                 CallBase = true
             };
             player.Setup(x => x.Move(
+                It.IsAny<IUserInterfaceable>(),
                 It.IsAny<Game>(),
                 It.IsIn(Board.Marks.o.ToString(),
                     Board.Marks.x.ToString()))
@@ -57,7 +72,7 @@ namespace Test
         public void PrintsEmptyThreeByThreeBoard()
         {
             StringWriter sw = CaptureOutput();
-            this.game.PrintBoard();
+            this.game.PrintBoard(new CommandLineInterface.MessageHandler());
             string expected = " 01 | 02 | 03 \n--------------\n 04 | 05 | 06 \n--------------\n 07 | 08 | 09 ";
             StringAssert.Contains(expected, sw.ToString());
         }
@@ -78,7 +93,7 @@ namespace Test
         public void IfGameEndsInDraw_PrintsDrawResult()
         {
             StringWriter sw = CaptureOutput();
-            SetUpGameWithTiedEndgame().Run();
+            SetUpGameWithTiedEndgame().Run(client);
             StringAssert.Contains("No one wins!", sw.ToString());
         }
         
@@ -94,8 +109,8 @@ namespace Test
         public void IfGameEndsWithAWinner_PrintsWinnerResult()
         {
             StringWriter sw = CaptureOutput();
-            SetUpGameWithAnEndgameThatHasAWinner().Run();
-            StringAssert.Contains($"{MessageHandler.DefaultBoardEmojiMarker.Cross.code} won the game!", sw.ToString());
+            SetUpGameWithAnEndgameThatHasAWinner().Run(client);
+            StringAssert.Contains($"{DefaultBoardEmojiMarker.Cross.code} won the game!", sw.ToString());
         }
     }
 }
