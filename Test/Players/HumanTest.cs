@@ -2,6 +2,7 @@ using App;
 using App.Client;
 using App.Client.CLI;
 using App.Players;
+using App.UI;
 using App.UI.Message;
 using Moq;
 using NUnit.Framework;
@@ -13,7 +14,7 @@ namespace Test.Players
     [TestFixture]
     public class HumanTest
     {
-        private IClient client;
+        private IUserInterfaceable client;
         private Human human;
         private Player opponent;
         private Game game;
@@ -21,10 +22,18 @@ namespace Test.Players
         [SetUp]
         public void Init()
         {
-            this.client = Mock.Of<IClient>();
-            this.human = new Human(DefaultBoardEmojiMarker.Cross.code);
-            this.opponent = GetOpponent();
-            this.game = GetEmptyThreeByThreeGame();
+            client = SetupClient();
+            human = new Human(DefaultBoardEmojiMarker.Cross.code);
+            opponent = GetOpponent();
+            game = GetEmptyThreeByThreeGame();
+        }
+
+        private IUserInterfaceable SetupClient()
+        {
+            Mock<IUserInterfaceable> mock = new Mock<IUserInterfaceable>();
+            mock.Setup(m => m.GetPrompt())
+                .Returns(new Prompt(new CommandLineInterface.MessageHandler()));
+            return mock.Object;
         }
 
         private Player GetOpponent()

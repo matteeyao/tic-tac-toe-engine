@@ -30,12 +30,12 @@ namespace App
             return this.board;
         }
 
-        public void PrintBoard()
+        public void PrintBoard(IUserInterfaceable.Interactable messageHandler)
         {
-            MessageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
+            messageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
         }
 
-        public void Run(IClient client)
+        public void Run(IUserInterfaceable client)
         {
             while (!this.IsOver())
             {
@@ -45,7 +45,7 @@ namespace App
             this.PrintResults(client);
         }
 
-        private void PlayTurn(IClient client)
+        private void PlayTurn(IUserInterfaceable client)
         {
             Player currentPlayer = this.players[this.turn];
             int pos = currentPlayer.Move(client, this, this.turn);
@@ -62,28 +62,28 @@ namespace App
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
         
-        private void PrintResults(IClient client)
+        private void PrintResults(IUserInterfaceable client)
         {
             client.Board();
             if (this.board.HasWinner())
             {
                 Player winningPlayer = this.players[this.board.Winner()];
-                PrintWinner(winningPlayer);
+                PrintWinner(client, winningPlayer);
             }
             else
             {
-                PrintDraw();
+                PrintDraw(client);
             }
         }
 
-        private void PrintWinner(Player player)
+        private void PrintWinner(IUserInterfaceable client, Player player)
         {
-            MessageHandler.Print(DynamicMessage.DeclarationOfWinner(player.GetMarker()));
+            client.GetMessageHandler().Print(DynamicMessage.DeclarationOfWinner(player.GetMarker()));
         }
 
-        private void PrintDraw()
+        private void PrintDraw(IUserInterfaceable client)
         {
-            MessageHandler.Print(StaticMessage.DeclarationOfDraw);
+            client.GetMessageHandler().Print(StaticMessage.DeclarationOfDraw);
         }
     }
 }

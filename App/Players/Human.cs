@@ -8,10 +8,10 @@ namespace App.Players
     {
         public Human(string marker) : base(marker) { }
 
-        public override int Move(IClient client, Game game, string turnDesignatedMark)
+        public override int Move(IUserInterfaceable client, Game game, string turnDesignatedMark)
         {
             client.Board();
-            return Prompt.GetMove(this.GetMarker(), game.GetBoard());
+            return client.GetPrompt().GetMove(this.GetMarker(), game.GetBoard());
         }
     }
 }

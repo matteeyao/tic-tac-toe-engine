@@ -1,4 +1,5 @@
 using System;
+using App.Client;
 using App.Client.CLI;
 using App.UI.Message;
 
@@ -6,63 +7,70 @@ namespace App.UI
 {
     public class Prompt
     {
-        public static int GetGameMode()
+        private IUserInterfaceable.Interactable messageHandler;
+
+        public Prompt(IUserInterfaceable.Interactable messageHandler)
         {
-            MessageHandler.Print(StaticMessage.Greeting);
-            MessageHandler.Print(StaticMessage.GameModes);
-            MessageHandler.Print(StaticMessage.RequestToChooseGameMode);
+            this.messageHandler = messageHandler;
+        }
+        
+        public int GetGameMode()
+        {
+            messageHandler.Print(StaticMessage.Greeting);
+            messageHandler.Print(StaticMessage.GameModes);
+            messageHandler.Print(StaticMessage.RequestToChooseGameMode);
             return GetInteger(StaticMessage.RequestToChooseGameModeAfterInvalidInput,
                 Validator.IsGameModeValid);
         }
 
-        public static Board.Dimensions GetBoardSize()
+        public Board.Dimensions GetBoardSize()
         {
-            MessageHandler.Print(StaticMessage.RequestToInputBoardSize);
+            messageHandler.Print(StaticMessage.RequestToInputBoardSize);
             int boardSize = GetInteger(StaticMessage.RequestToInputBoardSizeAfterInvalidInput,
                 Validator.IsBoardSizeValid);
             return DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(boardSize);
         }
         
-        private static Board.Dimensions DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(int boardSize)
+        private Board.Dimensions DefaultToThreeByThreeBoardSizeGivenInputtedDimensionIsNull(int boardSize)
         {
             return boardSize == -1 ? Board.Dimensions.ThreeByThree :
                 (Board.Dimensions) Enum.ToObject(typeof(Board.Dimensions), boardSize);
         }
         
-        public static string GetPlayerOneMarker(bool isOpponentComputer = true)
+        public string GetPlayerOneMarker(bool isOpponentComputer = true)
         {
-            MessageHandler.Print(DynamicMessage.RequestForPlayerOnesMarker(isOpponentComputer));
+            messageHandler.Print(DynamicMessage.RequestForPlayerOnesMarker(isOpponentComputer));
             string marker = GetString(StaticMessage.NoticeForInvalidMarker,
                 Validator.IsMarkerValid);
             return DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(marker);
         }
 
-        private static string DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(string marker)
+        private string DefaultCrossEmojiMarkerGivenInputtedMarkerIsNull(string marker)
         {
             return marker.Length == 0 ? DefaultBoardEmojiMarker.Cross.code : marker;
         }
         
-        public static string GetPlayerTwoMarker()
+        public string GetPlayerTwoMarker()
         {
-            MessageHandler.Print(StaticMessage.RequestForPlayerTwosMarker);
+            messageHandler.Print(StaticMessage.RequestForPlayerTwosMarker);
             string marker = GetString(StaticMessage.NoticeForInvalidMarker,
                 Validator.IsMarkerValid);
             return DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(marker);
         }
         
-        private static string DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(string marker)
+        private string DefaultCircleEmojiMarkerGivenInputtedMarkerIsNull(string marker)
         {
             return marker.Length == 0 ? DefaultBoardEmojiMarker.Circle.code : marker;
         }
 
-        public static int GetMove(string mark, Board board)
+        public int GetMove(string mark, Board board)
         {
-            MessageHandler.Print(DynamicMessage.RequestForPlayerToInputMove(mark, board.GetDimension()));
-            string input = MessageHandler.Read();
+            messageHandler.Print(DynamicMessage.RequestForPlayerToInputMove(mark, board.GetDimension()));
+            string input = messageHandler.Read();
             
             if (!Validator.IsInputAPositiveInteger(input))
             {
-                MessageHandler.Print(StaticMessage.NoticeForInvalidPosition);
+                messageHandler.Print(StaticMessage.NoticeForInvalidPosition);
                 return GetMove(mark, board);
             }
             
@@ -70,46 +78,46 @@ namespace App.UI
             
             if (!Validator.IsMoveWithinBounds(board, index))
             {
-                MessageHandler.Print(StaticMessage.NoticeForInvalidPosition);
+                messageHandler.Print(StaticMessage.NoticeForInvalidPosition);
                 return GetMove(mark, board);
             }
 
             if (!Validator.IsMoveAvailable(board, index))
             {
-                MessageHandler.Print(StaticMessage.NoticeIfPositionIsTaken);
+                messageHandler.Print(StaticMessage.NoticeIfPositionIsTaken);
                 return GetMove(mark, board);
             }
 
             return index;
         }
 
-        private static string GetString(StaticMessage message, Func<string, bool> validator)
+        private string GetString(StaticMessage message, Func<string, bool> validator)
         {
-            string input = MessageHandler.Read();
+            string input = messageHandler.Read();
             
             if (validator(input))
             {
                 return input;
             }
 
-            MessageHandler.Print(message);
+            messageHandler.Print(message);
             return GetString(message, validator);
         }
 
-        private static int GetInteger(StaticMessage message, Func<string, bool> validator)
+        private int GetInteger(StaticMessage message, Func<string, bool> validator)
         {
-            string input = MessageHandler.Read();
+            string input = messageHandler.Read();
             
             if (validator(input))
             {
                 return ConvertStringToIntegerOutput(input);
             }
 
-            MessageHandler.Print(message);
+            messageHandler.Print(message);
             return GetInteger(message, validator);
         }
         
-        private static int ConvertStringToIntegerOutput(string input)
+        private int ConvertStringToIntegerOutput(string input)
         {
             return Int32.TryParse(input, out int result) ? result : -1;
         }

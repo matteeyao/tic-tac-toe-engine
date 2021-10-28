@@ -11,14 +11,14 @@ namespace Test.Players
     [TestFixture]
     public class PlayerTest
     {
-        private IClient client;
+        private IUserInterfaceable client;
         private string marker;
         private Player player;
         
         [SetUp]
         public void Init()
         {
-            this.client = Mock.Of<IClient>();
+            this.client = Mock.Of<IUserInterfaceable>();
             this.marker = DefaultBoardEmojiMarker.Cross.code;
             this.player = SetUpMockPlayer();
         }
@@ -29,7 +29,7 @@ namespace Test.Players
             {
                 CallBase = true
             };
-            player.Setup(x => x.Move(It.IsAny<IClient>(), It.IsAny<Game>(), It.IsAny<string>())).Returns(0);
+            player.Setup(x => x.Move(It.IsAny<IUserInterfaceable>(), It.IsAny<Game>(), It.IsAny<string>())).Returns(0);
             return player.Object;
         }
 

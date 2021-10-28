@@ -5,9 +5,9 @@ namespace App
 {
     public class TicTacToe
     {
-        private readonly IClient client;
+        private readonly IUserInterfaceable client;
 
-        public TicTacToe(IClient client = null)
+        public TicTacToe(IUserInterfaceable client = null)
         {
             this.client = client ?? new CommandLineInterface();
         }
