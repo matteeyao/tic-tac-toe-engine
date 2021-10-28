@@ -35,7 +35,7 @@ namespace App
             messageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
         }
 
-        public void Run(IUserInterfaceable client)
+        public virtual void Run(IUserInterfaceable client)
         {
             while (!this.IsOver())
             {
