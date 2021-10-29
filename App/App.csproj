@@ -5,7 +5,7 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         
         <PackageId>TicTacToe</PackageId>
-        <Version>1.0.2</Version>
+        <Version>2.0.0</Version>
         <Authors>Matthew Yao</Authors>
         <Owners>matteeyao</Owners>
         <Company>8th Light</Company>
