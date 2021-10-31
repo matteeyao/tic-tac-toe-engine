@@ -2,9 +2,11 @@
 
 1. In `App/App.csproj`, update the package version or remove the package from GitHub Packages to re-upload the current packaged app
 
-2. Once any changes has been made and version has been updated, run `dotnet pack --configuration Release`
+2. Remove `TicTacToe.1.0.0.nupkg` file from `bin/Debug` and `bin/Release`
 
-3. With the correct configuration in place, we can push our package to GitHub with:
+3. Once any changes has been made and version has been updated, run `dotnet pack --configuration Release`
+
+4. With the correct configuration in place, we can push our package to GitHub with:
 
 ```
 dotnet nuget push ./bin/Release/TicTacToe.1.0.0.nupkg --source "github"
@@ -18,6 +20,10 @@ dotnet nuget push ./bin/Release/TicTacToe.1.0.0.nupkg --source "github"
 If you encounter package installation problems or otherwise want to ensure that you're installing packages from a remote gallery, use the `locals --clear` option (dotnet.exe) or `locals -clear` (nuget.exe), specifying the folder to clear, or `all` to clear all folders:
 
 ```cli
+# Clear all caches (use either command)
+dotnet nuget locals all --clear
+nuget locals all -clear
+
 # Clear all caches (use either command)
 dotnet nuget locals all --clear
 nuget locals all -clear
