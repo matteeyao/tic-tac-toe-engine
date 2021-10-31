@@ -19,8 +19,8 @@ namespace Test.Client.Web
         [Test]
         public void ReturnsGreeting()
         {
-            string content = messageHandler.Print(StaticMessage.Greeting);
-            StringAssert.Contains("Welcome to Tic-Tac-Toe!", content);
+            messageHandler.Print(StaticMessage.Greeting);
+            StringAssert.Contains("Welcome to Tic-Tac-Toe!", messageHandler.currentMessage);
         }
     }
 }
