@@ -1,12 +1,21 @@
 # Packaging and Hosting a NuGet package on GitHub
 
-1. In `App/App.csproj`, update the package version or remove the package from GitHub Packages to re-upload the current packaged app
+1. `cd` into `App`
 
-2. Remove `TicTacToe.1.0.0.nupkg` file from `bin/Debug` and `bin/Release`
+2. In `App/App.csproj`, update the package version or remove the package from GitHub Packages to re-upload the current packaged app
 
-3. Once any changes has been made and version has been updated, run `dotnet pack --configuration Release`
+3. Remove `/Debug` and `Release` from `bin`
 
-4. With the correct configuration in place, we can push our package to GitHub with:
+4. Run command
+
+```
+dotnet build
+dotnet build --configuration Release
+```
+
+5. Once any changes has been made and version has been updated, run `dotnet pack --configuration Release`
+
+6. With the correct configuration in place, we can push our package to GitHub with:
 
 ```
 dotnet nuget push ./bin/Release/TicTacToe.1.0.0.nupkg --source "github"
