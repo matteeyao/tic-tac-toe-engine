@@ -9,8 +9,11 @@
         <Authors>Matthew Yao</Authors>
         <Owners>matteeyao</Owners>
         <Company>8th Light</Company>
+        <Description>
+            An implementation of Tic-Tac-Toe in C#, adhering to OOD, TDD, the Four Rules of Simple Design, and SOLID principles
+        </Description>
         
-        <RepositoryUrl>https://github.com/matteeyao/tic-tac-toe.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/matteeyao/tic-tac-toe</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

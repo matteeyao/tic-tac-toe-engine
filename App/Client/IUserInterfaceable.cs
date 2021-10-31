@@ -7,7 +7,7 @@ namespace App.Client
     {
         public interface Interactable
         {
-            public string Print(IPrintable message);
+            public void Print(IPrintable message);
             public string Read(string input = null);
         }
 

@@ -10,14 +10,18 @@ namespace App.Client.Web
     {
         public class MessageHandler : IUserInterfaceable.Interactable
         {
-            public string Print(IPrintable message)
+            public string currentMessage { get; set; }
+            public string currentInput { get; set; }
+            
+            public void Print(IPrintable message)
             {
-                return message.GetMessage();
+                this.currentMessage = message.GetMessage();
             }
         
             public string Read(string input)
             {
-                return input;
+                this.currentInput = input;
+                return this.currentInput;
             }
         }
         

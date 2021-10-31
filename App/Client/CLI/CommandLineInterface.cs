@@ -9,10 +9,9 @@ namespace App.Client.CLI
     {
         public class MessageHandler : IUserInterfaceable.Interactable
         {
-            public string Print(IPrintable message)
+            public void Print(IPrintable message)
             {
                 Console.Write(message.GetMessage());
-                return null;
             }
     
             public string Read(string input = null)
