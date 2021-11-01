@@ -45,7 +45,12 @@ namespace App.Client.Web
         {
             return prompt;
         }
-        
+
+        public string GetMessage()
+        {
+            return messageHandler.currentMessage;
+        }
+
         public void Run(IUserInterfaceable client)
         {
             game.Run(client);

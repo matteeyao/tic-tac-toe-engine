@@ -5,6 +5,7 @@ using App.Client;
 using App.Client.Web;
 using App.Players;
 using App.UI;
+using App.UI.Message;
 using Moq;
 using NUnit.Framework;
 
@@ -33,6 +34,13 @@ namespace Test.Client.Web
         {
             Prompt prompt = webInterface.GetPrompt();
             Assert.IsInstanceOf<Prompt>(prompt);
+        }
+
+        [Test]
+        public void ReturnsMessage()
+        {
+            webInterface.GetMessageHandler().Print(StaticMessage.Greeting);
+            StringAssert.Contains("Welcome to Tic-Tac-Toe!", webInterface.GetMessage());
         }
         
         [Test]
