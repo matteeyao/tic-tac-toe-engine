@@ -1,19 +1,22 @@
+using System.Threading.Tasks;
 using App.UI;
 using App.UI.Message;
 
 namespace App.Client
 {
-    public interface IUserInterfaceable
+    public interface IRunnable
     {
         public interface Interactable
         {
+            public string Message { get; set; }
+            public string Input { get; set; }
             public void Print(IPrintable message);
-            public string Read(string input = null);
+            public string Read();
         }
 
         public Interactable GetMessageHandler();
         public Prompt GetPrompt();
-        public void Run(IUserInterfaceable client);
+        public void Run(IRunnable client);
         public string[] Board();
     }
 }

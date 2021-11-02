@@ -14,39 +14,45 @@ namespace Test.Client.Web
     [TestFixture]
     public class WebInterfaceTest
     {
-        private WebInterface webInterface;
+        private App.Client.Web.Web _web;
 
         [SetUp]
         public void Init()
         {
-            webInterface = new WebInterface();
+            _web = new App.Client.Web.Web();
         }
 
         [Test]
         public void ReturnsWebMessageHandler()
         {
-            IUserInterfaceable.Interactable messageHandler = webInterface.GetMessageHandler();
-            Assert.IsInstanceOf<IUserInterfaceable.Interactable>(messageHandler);
+            IRunnable.Interactable messageHandler = _web.GetMessageHandler();
+            Assert.IsInstanceOf<IRunnable.Interactable>(messageHandler);
         }
 
         [Test]
         public void ReturnsPrompt()
         {
-            Prompt prompt = webInterface.GetPrompt();
+            Prompt prompt = _web.GetPrompt();
             Assert.IsInstanceOf<Prompt>(prompt);
         }
 
         [Test]
         public void ReturnsMessage()
         {
-            webInterface.GetMessageHandler().Print(StaticMessage.Greeting);
-            StringAssert.Contains("Welcome to Tic-Tac-Toe!", webInterface.GetMessage());
+            _web.GetMessageHandler().Print(StaticMessage.Greeting);
+            StringAssert.Contains("Welcome to Tic-Tac-Toe!", _web.GetMessage());
+        }
+
+        [Test]
+        public void WhenInputPropertyIsChanged_ReturnsTrue()
+        {
+            // Assert.IsTrue(new WebInterface.MessageHandler().Read());
         }
         
         [Test]
         public void ReturnsBoardGrid()
         {
-            string[] board = webInterface.Board();
+            string[] board = _web.Board();
             int boardSize = (int) Math.Pow((int) Board.Dimensions.ThreeByThree, 2);
             string[] expected = Enumerable.Range(1, boardSize).Select(i => i.ToString()).ToArray();
             Assert.AreEqual(expected, board);
@@ -56,16 +62,16 @@ namespace Test.Client.Web
         public void RunIsInvokedOnGameAtLeastOnce()
         {
             Game game = SetupMockGame();
-            WebInterface webInterfaceWithMockedGame = new WebInterface(game);
-            webInterfaceWithMockedGame.Run(webInterfaceWithMockedGame);
+            App.Client.Web.Web webWithMockedGame = new App.Client.Web.Web(game);
+            webWithMockedGame.Run(webWithMockedGame);
             Mock.Get(game).Verify(x =>
-                x.Run(It.IsAny<IUserInterfaceable>()), Times.AtLeast(1));
+                x.Run(It.IsAny<IRunnable>()), Times.AtLeast(1));
         }
         
         private Game SetupMockGame()
         {
             Mock<Game> mockGame = new Mock<Game>(It.IsAny<Player>(), It.IsAny<Player>(), Board.Dimensions.ThreeByThree);
-            mockGame.Setup(game => game.Run(It.IsAny<IUserInterfaceable>()));
+            mockGame.Setup(game => game.Run(It.IsAny<IRunnable>()));
             return mockGame.Object;
         }
     }

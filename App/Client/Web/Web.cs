@@ -1,27 +1,50 @@
+using System;
 using System.Linq;
-using App.Client.CLI;
 using App.Players;
 using App.UI;
 using App.UI.Message;
 
 namespace App.Client.Web
 {
-    public class WebInterface : IUserInterfaceable
+    public class Web : IRunnable
     {
-        public class MessageHandler : IUserInterfaceable.Interactable
+        public class MessageHandler : IRunnable.Interactable
         {
-            public string currentMessage { get; set; }
-            public string currentInput { get; set; }
+            private string message = String.Empty;
+            public string Message
+            {
+                get => message;
+                set => message = value;
+            }
+            
+            private string input = String.Empty;
+            public string Input
+            {
+                get => input;
+                set
+                {
+                    input = value;
+                    isInputChanged = true;
+                }
+            }
+
+            private bool isInputChanged;
+            public bool IsInputChanged
+            {
+                get => isInputChanged;
+                set => isInputChanged = value;
+            }
             
             public void Print(IPrintable message)
             {
-                this.currentMessage = message.GetMessage();
+                this.Message = message.GetMessage();
             }
         
-            public string Read(string input)
+            public string Read()
             {
-                this.currentInput = input;
-                return this.currentInput;
+                if (!IsInputChanged) return Read();
+                IsInputChanged = false;
+                return Input;
             }
         }
         
@@ -29,14 +52,14 @@ namespace App.Client.Web
         private static Prompt prompt;
         private Game game;
         
-        public WebInterface(Game game = null)
+        public Web(Game game = null)
         {
             messageHandler = new MessageHandler();
             prompt  = new Prompt(messageHandler);
             this.game = game ?? SetupGame();
         }
         
-        public IUserInterfaceable.Interactable GetMessageHandler()
+        public IRunnable.Interactable GetMessageHandler()
         {
             return messageHandler;
         }
@@ -48,10 +71,10 @@ namespace App.Client.Web
 
         public string GetMessage()
         {
-            return messageHandler.currentMessage;
+            return messageHandler.Message;
         }
-
-        public void Run(IUserInterfaceable client)
+        
+        public void Run(IRunnable client)
         {
             game.Run(client);
         }

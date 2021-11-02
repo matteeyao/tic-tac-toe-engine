@@ -7,9 +7,9 @@ namespace App.UI
 {
     public class Prompt
     {
-        private IUserInterfaceable.Interactable messageHandler;
+        private IRunnable.Interactable messageHandler;
 
-        public Prompt(IUserInterfaceable.Interactable messageHandler)
+        public Prompt(IRunnable.Interactable messageHandler)
         {
             this.messageHandler = messageHandler;
         }

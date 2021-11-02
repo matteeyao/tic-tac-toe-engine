@@ -9,12 +9,12 @@ namespace Test.Client.CLI
     [TestFixture]
     public class MessageHandlerTest
     {
-        private CommandLineInterface.MessageHandler messageHandler;
+        private CommandLine.MessageHandler messageHandler;
         
         [SetUp]
         public void Init()
         {
-            messageHandler = new CommandLineInterface.MessageHandler();
+            messageHandler = new CommandLine.MessageHandler();
         }
         
         public StringWriter CaptureOutput()

@@ -1,22 +1,38 @@
 using System;
+using System.Threading.Tasks;
 using App.Players;
 using App.UI;
 using App.UI.Message;
 
 namespace App.Client.CLI
 {
-    public class CommandLineInterface : IUserInterfaceable
+    public class CommandLine : IRunnable
     {
-        public class MessageHandler : IUserInterfaceable.Interactable
+        public class MessageHandler : IRunnable.Interactable
         {
+            private string message;
+            public string Message
+            {
+                get => message;
+                set => message = value;
+            }
+            private string input;
+            public string Input
+            {
+                get => input;
+                set => input = value;
+            }
+            
             public void Print(IPrintable message)
             {
-                Console.Write(message.GetMessage());
+                Message = message.GetMessage();
+                Console.Write(Message);
             }
     
-            public string Read(string input = null)
+            public string Read()
             {
-                return Console.ReadLine();
+                Input = Console.ReadLine();
+                return Input;
             }
         }
 
@@ -24,14 +40,14 @@ namespace App.Client.CLI
         private static Prompt prompt;
         private Game game;
 
-        public CommandLineInterface()
+        public CommandLine()
         {
             messageHandler = new MessageHandler();
             prompt  = new Prompt(messageHandler);
             game = SetupGame();
         }
 
-        public IUserInterfaceable.Interactable GetMessageHandler()
+        public IRunnable.Interactable GetMessageHandler()
         {
             return messageHandler;
         }
@@ -41,7 +57,7 @@ namespace App.Client.CLI
             return prompt;
         }
         
-        public void Run(IUserInterfaceable client)
+        public void Run(IRunnable client)
         {
             this.game.Run(client);
         }

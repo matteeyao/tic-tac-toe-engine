@@ -14,7 +14,7 @@ namespace Test.Players
     [TestFixture]
     public class HumanTest
     {
-        private IUserInterfaceable client;
+        private IRunnable client;
         private Human human;
         private Player opponent;
         private Game game;
@@ -28,11 +28,11 @@ namespace Test.Players
             game = GetEmptyThreeByThreeGame();
         }
 
-        private IUserInterfaceable SetupClient()
+        private IRunnable SetupClient()
         {
-            Mock<IUserInterfaceable> mock = new Mock<IUserInterfaceable>();
+            Mock<IRunnable> mock = new Mock<IRunnable>();
             mock.Setup(m => m.GetPrompt())
-                .Returns(new Prompt(new CommandLineInterface.MessageHandler()));
+                .Returns(new Prompt(new CommandLine.MessageHandler()));
             return mock.Object;
         }
 

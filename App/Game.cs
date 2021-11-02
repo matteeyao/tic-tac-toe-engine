@@ -30,12 +30,12 @@ namespace App
             return this.board;
         }
 
-        public void PrintBoard(IUserInterfaceable.Interactable messageHandler)
+        public void PrintBoard(IRunnable.Interactable messageHandler)
         {
             messageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
         }
 
-        public virtual void Run(IUserInterfaceable client)
+        public virtual void Run(IRunnable client)
         {
             while (!this.IsOver())
             {
@@ -45,7 +45,7 @@ namespace App
             this.PrintResults(client);
         }
 
-        private void PlayTurn(IUserInterfaceable client)
+        private void PlayTurn(IRunnable client)
         {
             Player currentPlayer = this.players[this.turn];
             int pos = currentPlayer.Move(client, this, this.turn);
@@ -62,7 +62,7 @@ namespace App
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
         
-        private void PrintResults(IUserInterfaceable client)
+        private void PrintResults(IRunnable client)
         {
             client.Board();
             if (this.board.HasWinner())
@@ -76,12 +76,12 @@ namespace App
             }
         }
 
-        private void PrintWinner(IUserInterfaceable client, Player player)
+        private void PrintWinner(IRunnable client, Player player)
         {
             client.GetMessageHandler().Print(DynamicMessage.DeclarationOfWinner(player.GetMarker()));
         }
 
-        private void PrintDraw(IUserInterfaceable client)
+        private void PrintDraw(IRunnable client)
         {
             client.GetMessageHandler().Print(StaticMessage.DeclarationOfDraw);
         }

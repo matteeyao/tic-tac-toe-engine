@@ -14,17 +14,17 @@ namespace Test.Client.CLI
     [TestFixture]
     public class CommandLineInterfaceTest
     {
-        private CommandLineInterface commandLineInterface;
+        private CommandLine _commandLine;
         
         [SetUp]
         public void Init()
         {
             var playerOne = new Mock<Player>(DefaultBoardEmojiMarker.Cross.code);
             var playerTwo = new Mock<Player>(DefaultBoardEmojiMarker.Circle.code);
-            Mock<CommandLineInterface> commandLineInterface = new Mock<CommandLineInterface>();
+            Mock<CommandLine> commandLineInterface = new Mock<CommandLine>();
             commandLineInterface.Setup(x => x.SetupGame())
                 .Returns(new Game(playerOne.Object, playerTwo.Object, Board.Dimensions.ThreeByThree));
-            this.commandLineInterface = commandLineInterface.Object;
+            this._commandLine = commandLineInterface.Object;
         }
 
         private StringWriter CaptureOutput()
@@ -37,14 +37,14 @@ namespace Test.Client.CLI
         [Test]
         public void BoardInvocation_ReturnsNull()
         {
-            Assert.IsNull(commandLineInterface.Board());
+            Assert.IsNull(_commandLine.Board());
         }
         
         [Test]
         public void ReturnsAThreeByThreeBoardSize()
         {
             TestHelper.TestHelper.SetInput("3\n");
-            Board.Dimensions boardSize = this.commandLineInterface.GetBoardSize();
+            Board.Dimensions boardSize = this._commandLine.GetBoardSize();
             Assert.AreEqual(Board.Dimensions.ThreeByThree, boardSize);
         }
         
@@ -53,7 +53,7 @@ namespace Test.Client.CLI
         {
             TestHelper.TestHelper.SetInput($"{DefaultBoardEmojiMarker.Cross.code}\n");
             string expected = DefaultBoardEmojiMarker.Cross.code;
-            string actual = this.commandLineInterface.GetPlayerOneMarker(true);
+            string actual = this._commandLine.GetPlayerOneMarker(true);
             Assert.AreEqual(expected, actual);
         }
         
@@ -62,7 +62,7 @@ namespace Test.Client.CLI
         {
             TestHelper.TestHelper.SetInput($"{DefaultBoardEmojiMarker.Circle.code}\n");
             string expected = DefaultBoardEmojiMarker.Circle.code;
-            string actual = this.commandLineInterface.GetPlayerTwoMarker();
+            string actual = this._commandLine.GetPlayerTwoMarker();
             Assert.AreEqual(expected, actual);
         }
         
@@ -70,7 +70,7 @@ namespace Test.Client.CLI
         public void PrintsLineBreak()
         {
             StringWriter sw = CaptureOutput();
-            this.commandLineInterface.PrintLineBreak();
+            this._commandLine.PrintLineBreak();
             string expected = "\n";
             StringAssert.Contains(expected, sw.ToString());
         }
@@ -79,7 +79,7 @@ namespace Test.Client.CLI
         public void PrintsEmptyThreeByThreeBoard()
         {
             StringWriter sw = CaptureOutput();
-            this.commandLineInterface.Board();
+            this._commandLine.Board();
             string expected = " 01 | 02 | 03 \n--------------\n 04 | 05 | 06 \n--------------\n 07 | 08 | 09 ";
             StringAssert.Contains(expected, sw.ToString());
         }

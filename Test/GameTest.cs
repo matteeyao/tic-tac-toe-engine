@@ -14,7 +14,7 @@ namespace Test
     [TestFixture]
     public class GameTest
     {
-        private IUserInterfaceable client;
+        private IRunnable client;
         private Player playerOne;
         private Player playerTwo;
         private Game game;
@@ -35,13 +35,13 @@ namespace Test
             game = new Game(playerOne, playerTwo, Board.Dimensions.ThreeByThree);
         }
         
-        private IUserInterfaceable SetupClient()
+        private IRunnable SetupClient()
         {
-            Mock<IUserInterfaceable> mock = new Mock<IUserInterfaceable>();
+            Mock<IRunnable> mock = new Mock<IRunnable>();
             mock.Setup(m => m.GetMessageHandler())
-                .Returns(new CommandLineInterface.MessageHandler());
+                .Returns(new CommandLine.MessageHandler());
             mock.Setup(m => m.GetPrompt())
-                .Returns(new Prompt(new CommandLineInterface.MessageHandler()));
+                .Returns(new Prompt(new CommandLine.MessageHandler()));
             return mock.Object;
         }
 
@@ -52,7 +52,7 @@ namespace Test
                 CallBase = true
             };
             player.Setup(x => x.Move(
-                It.IsAny<IUserInterfaceable>(),
+                It.IsAny<IRunnable>(),
                 It.IsAny<Game>(),
                 It.IsIn(Board.Marks.o.ToString(),
                     Board.Marks.x.ToString()))
@@ -72,7 +72,7 @@ namespace Test
         public void PrintsEmptyThreeByThreeBoard()
         {
             StringWriter sw = CaptureOutput();
-            this.game.PrintBoard(new CommandLineInterface.MessageHandler());
+            this.game.PrintBoard(new CommandLine.MessageHandler());
             string expected = " 01 | 02 | 03 \n--------------\n 04 | 05 | 06 \n--------------\n 07 | 08 | 09 ";
             StringAssert.Contains(expected, sw.ToString());
         }

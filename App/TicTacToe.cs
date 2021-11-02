@@ -5,11 +5,11 @@ namespace App
 {
     public class TicTacToe
     {
-        private readonly IUserInterfaceable client;
+        private readonly IRunnable client;
 
-        public TicTacToe(IUserInterfaceable client = null)
+        public TicTacToe(IRunnable client = null)
         {
-            this.client = client ?? new CommandLineInterface();
+            this.client = client ?? new CommandLine();
         }
 
         public void Run()
