@@ -7,9 +7,9 @@ namespace App.UI
 {
     public class Prompt
     {
-        private IRunnable.Interactable messageHandler;
+        private IClient.Interactable messageHandler;
 
-        public Prompt(IRunnable.Interactable messageHandler)
+        public Prompt(IClient.Interactable messageHandler)
         {
             this.messageHandler = messageHandler;
         }
@@ -68,10 +68,20 @@ namespace App.UI
             messageHandler.Print(DynamicMessage.RequestForPlayerToInputMove(mark, board.GetDimension()));
             string input = messageHandler.Read();
             
+            if (!IsInputMoveValid(board, input))
+            {
+                return GetMove(mark, board);
+            }
+
+            return GetValidMove(input);
+        }
+
+        public bool IsInputMoveValid(Board board, string input)
+        {
             if (!Validator.IsInputAPositiveInteger(input))
             {
                 messageHandler.Print(StaticMessage.NoticeForInvalidPosition);
-                return GetMove(mark, board);
+                return false;
             }
             
             int index = ConvertStringToIntegerOutput(input) - 1;
@@ -79,15 +89,21 @@ namespace App.UI
             if (!Validator.IsMoveWithinBounds(board, index))
             {
                 messageHandler.Print(StaticMessage.NoticeForInvalidPosition);
-                return GetMove(mark, board);
+                return false;
             }
-
+            
             if (!Validator.IsMoveAvailable(board, index))
             {
                 messageHandler.Print(StaticMessage.NoticeIfPositionIsTaken);
-                return GetMove(mark, board);
+                return false;
             }
 
+            return true;
+        }
+
+        public int GetValidMove(string input)
+        {
+            int index = ConvertStringToIntegerOutput(input) - 1;
             return index;
         }
 

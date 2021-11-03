@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace Test.Client.CLI
 {
     [TestFixture]
-    public class CommandLineInterfaceTest
+    public class CommandLineTest
     {
         private CommandLine _commandLine;
         

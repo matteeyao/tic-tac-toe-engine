@@ -1,65 +1,28 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using App.Players;
 using App.UI;
 using App.UI.Message;
 
 namespace App.Client.Web
 {
-    public class Web : IRunnable
+    public class Web : IClient
     {
-        public class MessageHandler : IRunnable.Interactable
-        {
-            private string message = String.Empty;
-            public string Message
-            {
-                get => message;
-                set => message = value;
-            }
-            
-            private string input = String.Empty;
-            public string Input
-            {
-                get => input;
-                set
-                {
-                    input = value;
-                    isInputChanged = true;
-                }
-            }
-
-            private bool isInputChanged;
-            public bool IsInputChanged
-            {
-                get => isInputChanged;
-                set => isInputChanged = value;
-            }
-            
-            public void Print(IPrintable message)
-            {
-                this.Message = message.GetMessage();
-            }
-        
-            public string Read()
-            {
-                if (!IsInputChanged) return Read();
-                IsInputChanged = false;
-                return Input;
-            }
-        }
-        
-        private static MessageHandler messageHandler;
+        private static IClient.Interactable messageHandler;
+        public IClient.Interactable MessageHandler => messageHandler;
         private static Prompt prompt;
+        public Prompt Prompt => prompt;
         private Game game;
         
         public Web(Game game = null)
         {
             messageHandler = new MessageHandler();
-            prompt  = new Prompt(messageHandler);
+            prompt = new Prompt(messageHandler);
             this.game = game ?? SetupGame();
         }
         
-        public IRunnable.Interactable GetMessageHandler()
+        public IClient.Interactable GetMessageHandler()
         {
             return messageHandler;
         }
@@ -73,28 +36,49 @@ namespace App.Client.Web
         {
             return messageHandler.Message;
         }
-        
-        public void Run(IRunnable client)
-        {
-            game.Run(client);
-        }
 
         public string[] Board()
         {
-            return game.GetBoard().GetGrid().Cast<string>().ToArray();
+            return game
+                .GetBoard()
+                .GetGrid()
+                .Cast<string>()
+                .ToArray();
         }
         
         private Game SetupGame()
         {
-            return SetupCustomGame();
+            Board.Dimensions boardSize = App.Board.Dimensions.ThreeByThree;
+            string playerOneMarker = DefaultBoardEmojiMarker.Cross.code;
+            string playerTwoMarker = DefaultBoardEmojiMarker.Circle.code;
+            return SetupCustomGame(playerOneMarker, playerTwoMarker, boardSize);
         }
-        
-        private Game SetupCustomGame()
+
+        public void Run(IClient client, string input)
         {
-            return new Game(
-                new Human(DefaultBoardEmojiMarker.Cross.code),
-                new Human(DefaultBoardEmojiMarker.Circle.code),
-                App.Board.Dimensions.ThreeByThree);
+            game.InvokeTurn(client, input);
+            game.PromptMoveMessage(client);
+        }
+
+        // TODO: TEST
+        public int GetMove(string marker, string input)
+        {
+            Board();
+            if (!Prompt.IsInputMoveValid(game.GetBoard(), input))
+            {
+                return -1;
+            }
+            return Prompt.GetValidMove(input);
+        }
+
+        private Game SetupCustomGame(string playerOneMarker, string playerTwoMarker, Board.Dimensions boardSize)
+        {
+            Game game = new Game(
+                new Human(playerOneMarker),
+                new Human(playerTwoMarker),
+                boardSize);
+            game.PromptMoveMessage(this);
+            return game;
         }
     }
 }

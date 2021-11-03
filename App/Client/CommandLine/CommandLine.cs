@@ -6,38 +6,12 @@ using App.UI.Message;
 
 namespace App.Client.CLI
 {
-    public class CommandLine : IRunnable
+    public class CommandLine : IClient
     {
-        public class MessageHandler : IRunnable.Interactable
-        {
-            private string message;
-            public string Message
-            {
-                get => message;
-                set => message = value;
-            }
-            private string input;
-            public string Input
-            {
-                get => input;
-                set => input = value;
-            }
-            
-            public void Print(IPrintable message)
-            {
-                Message = message.GetMessage();
-                Console.Write(Message);
-            }
-    
-            public string Read()
-            {
-                Input = Console.ReadLine();
-                return Input;
-            }
-        }
-
         private static MessageHandler messageHandler;
+        public IClient.Interactable MessageHandler { get => messageHandler; }
         private static Prompt prompt;
+        public Prompt Prompt { get => prompt; }
         private Game game;
 
         public CommandLine()
@@ -46,20 +20,17 @@ namespace App.Client.CLI
             prompt  = new Prompt(messageHandler);
             game = SetupGame();
         }
-
-        public IRunnable.Interactable GetMessageHandler()
-        {
-            return messageHandler;
-        }
-
-        public Prompt GetPrompt()
-        {
-            return prompt;
-        }
         
-        public void Run(IRunnable client)
+        public void Run(IClient client, string input = null)
         {
             this.game.Run(client);
+        }
+
+        public int GetMove(string marker, string input)
+        {
+            Board();
+            game.PromptMoveMessage(this);
+            return Prompt.GetMove(marker, game.GetBoard());
         }
 
         public string[] Board()

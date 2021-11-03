@@ -8,14 +8,14 @@ namespace Test
     [TestFixture]
     public class TicTacToeTest
     { 
-        private IRunnable client;
+        private IClient client;
         private TicTacToe ticTacToe;
 
         [SetUp]
         public void Init()
         {
-            Mock<IRunnable> mock = new Mock<IRunnable>();
-            mock.Setup(m => m.Run(It.IsAny<IRunnable>()));
+            Mock<IClient> mock = new Mock<IClient>();
+            mock.Setup(m => m.Run(It.IsAny<IClient>(), null));
             client = mock.Object;
             ticTacToe = new TicTacToe(client);
         }
@@ -25,7 +25,7 @@ namespace Test
         {
             ticTacToe.Run();
             Mock.Get(client).Verify(x =>
-                x.Run(It.IsAny<IRunnable>()), Times.Exactly(1));
+                x.Run(It.IsAny<IClient>(), null), Times.Exactly(1));
         }
     }
 }

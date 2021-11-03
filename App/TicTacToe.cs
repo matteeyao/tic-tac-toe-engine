@@ -5,9 +5,9 @@ namespace App
 {
     public class TicTacToe
     {
-        private readonly IRunnable client;
+        private readonly IClient client;
 
-        public TicTacToe(IRunnable client = null)
+        public TicTacToe(IClient client = null)
         {
             this.client = client ?? new CommandLine();
         }

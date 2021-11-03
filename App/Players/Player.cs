@@ -16,6 +16,6 @@ namespace App.Players
             return this.marker;
         }
 
-        public abstract int Move(IRunnable interfaceable, Game game, string mark);
+        public abstract int Move(IClient interfaceable, Game game, string mark, string input);
     }
 }

@@ -4,7 +4,7 @@ using App.UI.Message;
 
 namespace App.Client
 {
-    public interface IRunnable
+    public interface IClient
     {
         public interface Interactable
         {
@@ -13,10 +13,11 @@ namespace App.Client
             public void Print(IPrintable message);
             public string Read();
         }
-
-        public Interactable GetMessageHandler();
-        public Prompt GetPrompt();
-        public void Run(IRunnable client);
+        
+        public Interactable MessageHandler { get; }
+        public Prompt Prompt { get; }
+        public void Run(IClient client, string input = null);
+        public int GetMove(string marker, string input);
         public string[] Board();
     }
 }

@@ -30,39 +30,62 @@ namespace App
             return this.board;
         }
 
-        public void PrintBoard(IRunnable.Interactable messageHandler)
+        public void PrintBoard(IClient.Interactable messageHandler)
         {
             messageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
         }
 
-        public virtual void Run(IRunnable client)
+        public virtual void Run(IClient client)
         {
-            while (!this.IsOver())
+            while (!IsOver())
             {
-                this.PlayTurn(client);
-                this.SwapTurn();
+                Play(client);
             }
-            this.PrintResults(client);
+            PrintResults(client);
         }
 
-        private void PlayTurn(IRunnable client)
+        // TODO: TEST METHOD
+        public virtual void InvokeTurn(IClient client, string input)
         {
-            Player currentPlayer = this.players[this.turn];
-            int pos = currentPlayer.Move(client, this, this.turn);
-            this.board.SetField(pos, this.turn);
-        }
+            Play(client, input);
 
+            if (IsOver())
+            {
+                PrintResults(client);
+            }
+        }
+        
+        private void Play(IClient client, string input = null)
+        {
+            PlayTurn(client, input);
+            SwapTurn();
+        }
+        
         private bool IsOver()
         {
             return this.board.HasWinner() || this.board.IsTied();
         }
-
+        
+        private void PlayTurn(IClient client, string input)
+        {
+            Player currentPlayer = this.players[this.turn];
+            int pos = currentPlayer.Move(client, this, this.turn, input);
+            this.board.SetField(pos, this.turn);
+        }
+        
         private void SwapTurn()
         {
             this.turn = ((this.turn.Equals(Board.Marks.x.ToString())) ? Board.Marks.o.ToString() : Board.Marks.x.ToString());
         }
+
+        public virtual void PromptMoveMessage(IClient client)
+        {
+            client.MessageHandler.Print(
+                DynamicMessage.RequestForPlayerToInputMove(players[turn].GetMarker(), board.GetDimension())
+            );
+        }
         
-        private void PrintResults(IRunnable client)
+        private void PrintResults(IClient client)
         {
             client.Board();
             if (this.board.HasWinner())
@@ -76,14 +99,14 @@ namespace App
             }
         }
 
-        private void PrintWinner(IRunnable client, Player player)
+        private void PrintWinner(IClient client, Player player)
         {
-            client.GetMessageHandler().Print(DynamicMessage.DeclarationOfWinner(player.GetMarker()));
+            client.MessageHandler.Print(DynamicMessage.DeclarationOfWinner(player.GetMarker()));
         }
 
-        private void PrintDraw(IRunnable client)
+        private void PrintDraw(IClient client)
         {
-            client.GetMessageHandler().Print(StaticMessage.DeclarationOfDraw);
+            client.MessageHandler.Print(StaticMessage.DeclarationOfDraw);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Test.Players
     [TestFixture]
     public class HumanTest
     {
-        private IRunnable client;
+        private IClient client;
         private Human human;
         private Player opponent;
         private Game game;
@@ -28,11 +28,11 @@ namespace Test.Players
             game = GetEmptyThreeByThreeGame();
         }
 
-        private IRunnable SetupClient()
+        private IClient SetupClient()
         {
-            Mock<IRunnable> mock = new Mock<IRunnable>();
-            mock.Setup(m => m.GetPrompt())
-                .Returns(new Prompt(new CommandLine.MessageHandler()));
+            Mock<IClient> mock = new Mock<IClient>();
+            mock.Setup(m => m.Prompt)
+                .Returns(new Prompt(new MessageHandler()));
             return mock.Object;
         }
 
@@ -61,7 +61,7 @@ namespace Test.Players
         {
             TestHelper.SetInput("1\n");
             string currentTurn = Board.Marks.x.ToString();
-            int index = this.human.Move(this.client, this.game, currentTurn);
+            int index = this.human.Move(this.client, this.game, currentTurn, null);
             Assert.AreEqual(0, index);
         }
     }

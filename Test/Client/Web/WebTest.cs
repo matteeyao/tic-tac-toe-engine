@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace Test.Client.Web
 {
     [TestFixture]
-    public class WebInterfaceTest
+    public class WebTest
     {
         private App.Client.Web.Web _web;
 
@@ -25,8 +25,8 @@ namespace Test.Client.Web
         [Test]
         public void ReturnsWebMessageHandler()
         {
-            IRunnable.Interactable messageHandler = _web.GetMessageHandler();
-            Assert.IsInstanceOf<IRunnable.Interactable>(messageHandler);
+            IClient.Interactable messageHandler = _web.GetMessageHandler();
+            Assert.IsInstanceOf<IClient.Interactable>(messageHandler);
         }
 
         [Test]
@@ -63,15 +63,16 @@ namespace Test.Client.Web
         {
             Game game = SetupMockGame();
             App.Client.Web.Web webWithMockedGame = new App.Client.Web.Web(game);
-            webWithMockedGame.Run(webWithMockedGame);
+            webWithMockedGame.Run(webWithMockedGame, "0");
             Mock.Get(game).Verify(x =>
-                x.Run(It.IsAny<IRunnable>()), Times.AtLeast(1));
+                x.InvokeTurn(It.IsAny<IClient>(), "0"), Times.AtLeast(1));
         }
         
         private Game SetupMockGame()
         {
             Mock<Game> mockGame = new Mock<Game>(It.IsAny<Player>(), It.IsAny<Player>(), Board.Dimensions.ThreeByThree);
-            mockGame.Setup(game => game.Run(It.IsAny<IRunnable>()));
+            mockGame.Setup(game => game.InvokeTurn(It.IsAny<IClient>(), It.IsAny<string>()));
+            mockGame.Setup(game => game.PromptMoveMessage(It.IsAny<IClient>()));
             return mockGame.Object;
         }
     }

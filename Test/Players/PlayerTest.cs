@@ -11,14 +11,14 @@ namespace Test.Players
     [TestFixture]
     public class PlayerTest
     {
-        private IRunnable client;
+        private IClient client;
         private string marker;
         private Player player;
         
         [SetUp]
         public void Init()
         {
-            this.client = Mock.Of<IRunnable>();
+            this.client = Mock.Of<IClient>();
             this.marker = DefaultBoardEmojiMarker.Cross.code;
             this.player = SetUpMockPlayer();
         }
@@ -29,7 +29,11 @@ namespace Test.Players
             {
                 CallBase = true
             };
-            player.Setup(x => x.Move(It.IsAny<IRunnable>(), It.IsAny<Game>(), It.IsAny<string>())).Returns(0);
+            player.Setup(x => x.Move(
+                It.IsAny<IClient>(),
+                It.IsAny<Game>(),
+                It.IsAny<string>(),
+                null)).Returns(0);
             return player.Object;
         }
 
@@ -43,7 +47,7 @@ namespace Test.Players
         public void ReturnsPosition()
         {
             Game game = new Game(SetUpMockPlayer(), SetUpMockPlayer(), Board.Dimensions.ThreeByThree);
-            Assert.AreEqual(0, this.player.Move(client, game, Board.Marks.x.ToString()));
+            Assert.AreEqual(0, this.player.Move(client, game, Board.Marks.x.ToString(), null));
         }
     }
 }

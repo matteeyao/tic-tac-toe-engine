@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using App.Client;
 using App.Client.CLI;
 using App.UI.Message;
 using NUnit.Framework;
@@ -9,12 +10,12 @@ namespace Test.Client.CLI
     [TestFixture]
     public class MessageHandlerTest
     {
-        private CommandLine.MessageHandler messageHandler;
+        private IClient.Interactable messageHandler;
         
         [SetUp]
         public void Init()
         {
-            messageHandler = new CommandLine.MessageHandler();
+            messageHandler = new MessageHandler();
         }
         
         public StringWriter CaptureOutput()

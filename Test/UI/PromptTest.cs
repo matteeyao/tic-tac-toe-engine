@@ -19,7 +19,7 @@ namespace Test.Client
         [SetUp]
         public void Init()
         {
-            this.prompt = new Prompt(new CommandLine.MessageHandler());
+            this.prompt = new Prompt(new MessageHandler());
             this.threeByThreeBoard = new Board();
             this.fourByFourBoard = new Board(Board.Dimensions.FourByFour);
             this.fiveByFiveBoard = new Board(Board.Dimensions.FiveByFive);

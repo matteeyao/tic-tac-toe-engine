@@ -14,7 +14,7 @@ namespace Test
     [TestFixture]
     public class GameTest
     {
-        private IRunnable client;
+        private IClient client;
         private Player playerOne;
         private Player playerTwo;
         private Game game;
@@ -35,13 +35,13 @@ namespace Test
             game = new Game(playerOne, playerTwo, Board.Dimensions.ThreeByThree);
         }
         
-        private IRunnable SetupClient()
+        private IClient SetupClient()
         {
-            Mock<IRunnable> mock = new Mock<IRunnable>();
-            mock.Setup(m => m.GetMessageHandler())
-                .Returns(new CommandLine.MessageHandler());
-            mock.Setup(m => m.GetPrompt())
-                .Returns(new Prompt(new CommandLine.MessageHandler()));
+            Mock<IClient> mock = new Mock<IClient>();
+            mock.Setup(m => m.MessageHandler)
+                .Returns(new MessageHandler());
+            mock.Setup(m => m.Prompt)
+                .Returns(new Prompt(new MessageHandler()));
             return mock.Object;
         }
 
@@ -52,10 +52,10 @@ namespace Test
                 CallBase = true
             };
             player.Setup(x => x.Move(
-                It.IsAny<IRunnable>(),
+                It.IsAny<IClient>(),
                 It.IsAny<Game>(),
-                It.IsIn(Board.Marks.o.ToString(),
-                    Board.Marks.x.ToString()))
+                It.IsIn(Board.Marks.o.ToString(), Board.Marks.x.ToString()),
+                null)
             ).Returns(pos);
             player.Setup(x => x.GetMarker()).Returns(defaultBoardEmojiMarker);
             return player.Object;
@@ -72,7 +72,7 @@ namespace Test
         public void PrintsEmptyThreeByThreeBoard()
         {
             StringWriter sw = CaptureOutput();
-            this.game.PrintBoard(new CommandLine.MessageHandler());
+            this.game.PrintBoard(new MessageHandler());
             string expected = " 01 | 02 | 03 \n--------------\n 04 | 05 | 06 \n--------------\n 07 | 08 | 09 ";
             StringAssert.Contains(expected, sw.ToString());
         }

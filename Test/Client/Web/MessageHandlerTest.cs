@@ -1,4 +1,4 @@
-using App.Client.CLI;
+using App.Client;
 using App.Client.Web;
 using App.UI.Message;
 using NUnit.Framework;
@@ -8,12 +8,12 @@ namespace Test.Client.Web
     [TestFixture]
     public class MessageHandlerTest
     {
-        private App.Client.Web.Web.MessageHandler messageHandler;
+        private IClient.Interactable messageHandler;
 
         [SetUp]
         public void Init()
         {
-            messageHandler = new App.Client.Web.Web.MessageHandler();
+            messageHandler = new MessageHandler();
         }
         
         [Test]
