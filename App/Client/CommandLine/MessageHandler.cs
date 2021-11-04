@@ -17,13 +17,25 @@ namespace App.Client.CLI
             get => input;
             set => input = value;
         }
-            
+        private string error;
+        public string Error
+        {
+            get => error;
+            set => error = value;
+        }
+        
         public void Print(IPrintable message)
         {
             Message = message.GetMessage();
             Console.Write(Message);
         }
-    
+        
+        public void PrintError(IPrintable message)
+        {
+            Error = message.GetMessage();
+            Console.Write(Error);
+        }
+
         public string Read()
         {
             Input = Console.ReadLine();

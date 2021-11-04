@@ -35,6 +35,11 @@ namespace App
             messageHandler.Print(DynamicMessage.Board(board.GetGrid(), players));
         }
 
+        public string FetchMarker(string sequence)
+        {
+            return players.ContainsKey(sequence) ? players[sequence].GetMarker() : sequence;
+        }
+
         public virtual void Run(IClient client)
         {
             while (!IsOver())
@@ -43,8 +48,7 @@ namespace App
             }
             PrintResults(client);
         }
-
-        // TODO: TEST METHOD
+        
         public virtual void InvokeTurn(IClient client, string input)
         {
             Play(client, input);
@@ -52,6 +56,10 @@ namespace App
             if (IsOver())
             {
                 PrintResults(client);
+            }
+            else
+            {
+                PromptMoveMessage(client);
             }
         }
         
@@ -68,7 +76,7 @@ namespace App
         
         private void PlayTurn(IClient client, string input)
         {
-            Player currentPlayer = this.players[this.turn];
+            Player currentPlayer = players[turn];
             int pos = currentPlayer.Move(client, this, this.turn, input);
             this.board.SetField(pos, this.turn);
         }

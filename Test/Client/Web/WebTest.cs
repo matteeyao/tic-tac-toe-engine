@@ -14,45 +14,32 @@ namespace Test.Client.Web
     [TestFixture]
     public class WebTest
     {
-        private App.Client.Web.Web _web;
+        private App.Client.Web.Web web;
 
         [SetUp]
         public void Init()
         {
-            _web = new App.Client.Web.Web();
+            web = new App.Client.Web.Web();
         }
 
         [Test]
         public void ReturnsWebMessageHandler()
         {
-            IClient.Interactable messageHandler = _web.GetMessageHandler();
+            IClient.Interactable messageHandler = web.GetMessageHandler();
             Assert.IsInstanceOf<IClient.Interactable>(messageHandler);
         }
 
         [Test]
-        public void ReturnsPrompt()
+        public void GivenInputString_ReturnsPosition()
         {
-            Prompt prompt = _web.GetPrompt();
-            Assert.IsInstanceOf<Prompt>(prompt);
-        }
-
-        [Test]
-        public void ReturnsMessage()
-        {
-            _web.GetMessageHandler().Print(StaticMessage.Greeting);
-            StringAssert.Contains("Welcome to Tic-Tac-Toe!", _web.GetMessage());
-        }
-
-        [Test]
-        public void WhenInputPropertyIsChanged_ReturnsTrue()
-        {
-            // Assert.IsTrue(new WebInterface.MessageHandler().Read());
+            int pos = web.GetMove(DefaultBoardEmojiMarker.Cross.code, "1");
+            Assert.AreEqual(0, pos);
         }
         
         [Test]
         public void ReturnsBoardGrid()
         {
-            string[] board = _web.Board();
+            string[] board = web.Board();
             int boardSize = (int) Math.Pow((int) Board.Dimensions.ThreeByThree, 2);
             string[] expected = Enumerable.Range(1, boardSize).Select(i => i.ToString()).ToArray();
             Assert.AreEqual(expected, board);
@@ -63,14 +50,15 @@ namespace Test.Client.Web
         {
             Game game = SetupMockGame();
             App.Client.Web.Web webWithMockedGame = new App.Client.Web.Web(game);
-            webWithMockedGame.Run(webWithMockedGame, "0");
+            webWithMockedGame.Run(webWithMockedGame, "1");
             Mock.Get(game).Verify(x =>
-                x.InvokeTurn(It.IsAny<IClient>(), "0"), Times.AtLeast(1));
+                x.InvokeTurn(It.IsAny<IClient>(), "1"), Times.AtLeast(1));
         }
         
         private Game SetupMockGame()
         {
             Mock<Game> mockGame = new Mock<Game>(It.IsAny<Player>(), It.IsAny<Player>(), Board.Dimensions.ThreeByThree);
+            mockGame.Setup(game => game.GetBoard()).Returns(new Board());
             mockGame.Setup(game => game.InvokeTurn(It.IsAny<IClient>(), It.IsAny<string>()));
             mockGame.Setup(game => game.PromptMoveMessage(It.IsAny<IClient>()));
             return mockGame.Object;

@@ -77,6 +77,22 @@ namespace Test
             StringAssert.Contains(expected, sw.ToString());
         }
 
+        [Test]
+        public void GivenMark_ReturnsPlayersMarker()
+        {
+            string marker = game.FetchMarker(Board.Marks.x.ToString());
+            Assert.AreEqual(DefaultBoardEmojiMarker.Cross.code, marker);
+            marker = game.FetchMarker(Board.Marks.o.ToString());
+            Assert.AreEqual(DefaultBoardEmojiMarker.Circle.code, marker);
+        }
+        
+        [Test]
+        public void GivenNonMark_ReturnsPlayersMarker()
+        {
+            string sequence = game.FetchMarker("1");
+            Assert.AreEqual("1", sequence);
+        }
+
         private Game SetUpGameWithTiedEndgame()
         {
             game.GetBoard().SetField(2, Board.Marks.x.ToString());
@@ -103,6 +119,16 @@ namespace Test
             game.GetBoard().SetField(4, Board.Marks.x.ToString());
             game.GetBoard().SetField(8, Board.Marks.x.ToString());
             return game;
+        }
+
+        [Test]
+        public void WhenMoveIsGiven_PrintsNotificationForNextPlayerToMakeMove()
+        {
+            StringWriter sw = CaptureOutput();
+            game.InvokeTurn(client, "1");
+            StringAssert.Contains(
+                $"{DefaultBoardEmojiMarker.Circle.code} enter a position 1-9 to mark: ", sw.ToString()
+            );
         }
         
         [Test]

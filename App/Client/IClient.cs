@@ -10,7 +10,9 @@ namespace App.Client
         {
             public string Message { get; set; }
             public string Input { get; set; }
+            public string Error { get; set; }
             public void Print(IPrintable message);
+            public void PrintError(IPrintable message);
             public string Read();
         }
         

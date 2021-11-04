@@ -80,7 +80,7 @@ namespace App.UI
         {
             if (!Validator.IsInputAPositiveInteger(input))
             {
-                messageHandler.Print(StaticMessage.NoticeForInvalidPosition);
+                messageHandler.PrintError(StaticMessage.NoticeForInvalidPosition);
                 return false;
             }
             
@@ -88,13 +88,13 @@ namespace App.UI
             
             if (!Validator.IsMoveWithinBounds(board, index))
             {
-                messageHandler.Print(StaticMessage.NoticeForInvalidPosition);
+                messageHandler.PrintError(StaticMessage.NoticeForInvalidPosition);
                 return false;
             }
             
             if (!Validator.IsMoveAvailable(board, index))
             {
-                messageHandler.Print(StaticMessage.NoticeIfPositionIsTaken);
+                messageHandler.PrintError(StaticMessage.NoticeIfPositionIsTaken);
                 return false;
             }
 

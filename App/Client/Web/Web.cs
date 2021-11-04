@@ -27,22 +27,13 @@ namespace App.Client.Web
             return messageHandler;
         }
 
-        public Prompt GetPrompt()
-        {
-            return prompt;
-        }
-
-        public string GetMessage()
-        {
-            return messageHandler.Message;
-        }
-
         public string[] Board()
         {
             return game
                 .GetBoard()
                 .GetGrid()
                 .Cast<string>()
+                .Select(s => game.FetchMarker(s))
                 .ToArray();
         }
         
@@ -56,18 +47,12 @@ namespace App.Client.Web
 
         public void Run(IClient client, string input)
         {
+            if (!Prompt.IsInputMoveValid(game.GetBoard(), input)) return;
             game.InvokeTurn(client, input);
-            game.PromptMoveMessage(client);
         }
-
-        // TODO: TEST
+        
         public int GetMove(string marker, string input)
         {
-            Board();
-            if (!Prompt.IsInputMoveValid(game.GetBoard(), input))
-            {
-                return -1;
-            }
             return Prompt.GetValidMove(input);
         }
 
