@@ -51,6 +51,7 @@ namespace App
         
         public virtual void InvokeTurn(IClient client, string input)
         {
+            client.MessageHandler.ClearError();
             Play(client, input);
 
             if (IsOver())
@@ -69,7 +70,7 @@ namespace App
             SwapTurn();
         }
         
-        private bool IsOver()
+        public bool IsOver()
         {
             return this.board.HasWinner() || this.board.IsTied();
         }

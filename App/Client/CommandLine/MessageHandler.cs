@@ -36,6 +36,11 @@ namespace App.Client.CLI
             Console.Write(Error);
         }
 
+        public void ClearError()
+        {
+            Error = String.Empty;
+        }
+
         public string Read()
         {
             Input = Console.ReadLine();

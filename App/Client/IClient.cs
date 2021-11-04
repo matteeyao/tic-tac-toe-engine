@@ -13,6 +13,7 @@ namespace App.Client
             public string Error { get; set; }
             public void Print(IPrintable message);
             public void PrintError(IPrintable message);
+            public void ClearError();
             public string Read();
         }
         

@@ -122,7 +122,7 @@ namespace Test
         }
 
         [Test]
-        public void WhenMoveIsGiven_PrintsNotificationForNextPlayerToMakeMove()
+        public void WhenMoveIsInvoked_PrintsNotificationForNextPlayerToMakeMove()
         {
             StringWriter sw = CaptureOutput();
             game.InvokeTurn(client, "1");

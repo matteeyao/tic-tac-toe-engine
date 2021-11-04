@@ -34,6 +34,11 @@ namespace App.Client.Web
             Error = message.GetMessage();
         }
         
+        public void ClearError()
+        {
+            Error = String.Empty;
+        }
+        
         public string Read()
         {
             return Input;

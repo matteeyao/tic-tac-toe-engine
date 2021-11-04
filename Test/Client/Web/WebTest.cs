@@ -54,6 +54,12 @@ namespace Test.Client.Web
             Mock.Get(game).Verify(x =>
                 x.InvokeTurn(It.IsAny<IClient>(), "1"), Times.AtLeast(1));
         }
+
+        [Test]
+        public void WhenGameIsStarted_ReturnsFalse()
+        {
+            Assert.IsFalse(web.IsGameOver());
+        }
         
         private Game SetupMockGame()
         {

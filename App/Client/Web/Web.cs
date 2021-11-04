@@ -37,14 +37,6 @@ namespace App.Client.Web
                 .ToArray();
         }
         
-        private Game SetupGame()
-        {
-            Board.Dimensions boardSize = App.Board.Dimensions.ThreeByThree;
-            string playerOneMarker = DefaultBoardEmojiMarker.Cross.code;
-            string playerTwoMarker = DefaultBoardEmojiMarker.Circle.code;
-            return SetupCustomGame(playerOneMarker, playerTwoMarker, boardSize);
-        }
-
         public void Run(IClient client, string input)
         {
             if (!Prompt.IsInputMoveValid(game.GetBoard(), input)) return;
@@ -54,6 +46,19 @@ namespace App.Client.Web
         public int GetMove(string marker, string input)
         {
             return Prompt.GetValidMove(input);
+        }
+
+        public bool IsGameOver()
+        {
+            return game.IsOver();
+        }
+        
+        private Game SetupGame()
+        {
+            Board.Dimensions boardSize = App.Board.Dimensions.ThreeByThree;
+            string playerOneMarker = DefaultBoardEmojiMarker.Cross.code;
+            string playerTwoMarker = DefaultBoardEmojiMarker.Circle.code;
+            return SetupCustomGame(playerOneMarker, playerTwoMarker, boardSize);
         }
 
         private Game SetupCustomGame(string playerOneMarker, string playerTwoMarker, Board.Dimensions boardSize)
