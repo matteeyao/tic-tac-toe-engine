@@ -34,4 +34,4 @@ Desktop.ini
 .DS_Store
 .idea
 
-TicTacToeEngine/nuget.config
+**/nuget.config
