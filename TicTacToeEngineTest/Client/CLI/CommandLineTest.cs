@@ -9,7 +9,7 @@ using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 
-namespace Test.Client.CLI
+namespace TicTacToeEngineTest.Client.CLI
 {
     [TestFixture]
     public class CommandLineTest

@@ -3,7 +3,7 @@ using TicTacToeEngine.Client;
 using Moq;
 using NUnit.Framework;
 
-namespace Test
+namespace TicTacToeEngineTest
 {
     [TestFixture]
     public class TicTacToeTest

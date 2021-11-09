@@ -1,7 +1,7 @@
 using TicTacToeEngine;
 using NUnit.Framework;
 
-namespace Test
+namespace TicTacToeEngineTest
 {
     [TestFixture]
     public class BoardTest

@@ -5,7 +5,7 @@ using TicTacToeEngine.Client.CLI;
 using TicTacToeEngine.UI.Message;
 using NUnit.Framework;
 
-namespace Test.Client.CLI
+namespace TicTacToeEngineTest.Client.CLI
 {
     [TestFixture]
     public class MessageHandlerTest

@@ -3,7 +3,7 @@ using TicTacToeEngine.Client.Web;
 using TicTacToeEngine.UI.Message;
 using NUnit.Framework;
 
-namespace Test.Client.Web
+namespace TicTacToeEngineTest.Client.Web
 {
     [TestFixture]
     public class MessageHandlerTest

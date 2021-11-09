@@ -9,7 +9,7 @@ using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 
-namespace Test
+namespace TicTacToeEngineTest
 {
     [TestFixture]
     public class GameTest

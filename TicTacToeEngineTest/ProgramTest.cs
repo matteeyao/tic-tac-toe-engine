@@ -1,9 +1,6 @@
-using TicTacToeEngine;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Moq;
 using NUnit.Framework;
 
-namespace Test
+namespace TicTacToeEngineTest
 {
     [TestFixture]
     public class ProgramTest

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Test.TestHelper
+namespace TicTacToeEngineTest.TestHelper
 {
     public static class TestHelper
     {

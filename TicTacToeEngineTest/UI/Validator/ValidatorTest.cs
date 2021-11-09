@@ -6,7 +6,7 @@ using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 
-namespace Test.UI
+namespace TicTacToeEngineTest.UI
 {
     [TestFixture]
     public class ValidatorTest

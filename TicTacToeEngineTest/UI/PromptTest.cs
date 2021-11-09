@@ -5,7 +5,7 @@ using TicTacToeEngine.UI;
 using TicTacToeEngine.UI.Message;
 using NUnit.Framework;
 
-namespace Test.Client
+namespace TicTacToeEngineTest.Client
 {
     [TestFixture]
     public class PromptTest

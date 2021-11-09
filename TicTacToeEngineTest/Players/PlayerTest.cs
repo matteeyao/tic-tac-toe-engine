@@ -6,7 +6,7 @@ using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 
-namespace Test.Players
+namespace TicTacToeEngineTest.Players
 {
     [TestFixture]
     public class PlayerTest
