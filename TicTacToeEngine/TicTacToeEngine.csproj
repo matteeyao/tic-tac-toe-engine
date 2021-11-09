@@ -17,6 +17,8 @@
         <RepositoryType>git</RepositoryType>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+        <RootNamespace>App</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

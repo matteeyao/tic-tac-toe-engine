@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{9E80D136-5EA9-4BDA-A8B1-1AF2ED35B6C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeEngine", "TicTacToeEngine\TicTacToeEngine.csproj", "{9E80D136-5EA9-4BDA-A8B1-1AF2ED35B6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{400C6762-AA8B-4A59-BD37-A94687E773B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeEngineTest", "TicTacToeEngineTest\TicTacToeEngineTest.csproj", "{400C6762-AA8B-4A59-BD37-A94687E773B1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2AC66A16-5E12-495C-8DFC-5CCB2027BF6E}"
 EndProject
