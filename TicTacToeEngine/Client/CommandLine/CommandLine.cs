@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using App.Players;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine.UI.Message;
+using TicTacToeEngine.Players;
+using TicTacToeEngine.UI;
 
-namespace App.Client.CLI
+namespace TicTacToeEngine.Client.CLI
 {
     public class CommandLine : IClient
     {

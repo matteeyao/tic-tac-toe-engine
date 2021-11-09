@@ -1,4 +1,4 @@
-namespace App.UI.Message
+namespace TicTacToeEngine.UI.Message
 {
     public interface IPrintable
     {

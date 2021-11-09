@@ -1,6 +1,6 @@
-using App.Client;
-using App.Client.Web;
-using App.UI.Message;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.Client.Web;
+using TicTacToeEngine.UI.Message;
 using NUnit.Framework;
 
 namespace Test.Client.Web

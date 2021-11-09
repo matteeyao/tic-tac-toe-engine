@@ -1,4 +1,4 @@
-namespace App.UI
+namespace TicTacToeEngine.UI
 {
     public class EmojiValidator
     {

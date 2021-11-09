@@ -1,5 +1,5 @@
-using App;
-using App.Client;
+using TicTacToeEngine;
+using TicTacToeEngine.Client;
 using Moq;
 using NUnit.Framework;
 

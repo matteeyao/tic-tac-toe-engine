@@ -1,9 +1,9 @@
 using System;
-using App.Client;
-using App.Client.CLI;
-using App.UI.Message;
+using TicTacToeEngine.Client.CLI;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.UI.Message;
 
-namespace App.UI
+namespace TicTacToeEngine.UI
 {
     public class Prompt
     {

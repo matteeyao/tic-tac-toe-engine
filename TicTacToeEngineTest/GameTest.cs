@@ -1,11 +1,11 @@
 using System;
 using System.IO;
-using App;
-using App.Client;
-using App.Client.CLI;
-using App.Players;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.Client.CLI;
+using TicTacToeEngine.Players;
+using TicTacToeEngine.UI;
+using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 

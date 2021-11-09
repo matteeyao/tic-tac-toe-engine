@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using App.Players;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine.Players;
+using TicTacToeEngine.UI;
+using TicTacToeEngine.UI.Message;
 
-namespace App.Client.Web
+namespace TicTacToeEngine.Client.Web
 {
     public class Web : IClient
     {
@@ -55,7 +55,7 @@ namespace App.Client.Web
         
         private Game SetupGame()
         {
-            Board.Dimensions boardSize = App.Board.Dimensions.ThreeByThree;
+            Board.Dimensions boardSize = TicTacToeEngine.Board.Dimensions.ThreeByThree;
             string playerOneMarker = DefaultBoardEmojiMarker.Cross.code;
             string playerTwoMarker = DefaultBoardEmojiMarker.Circle.code;
             return SetupCustomGame(playerOneMarker, playerTwoMarker, boardSize);

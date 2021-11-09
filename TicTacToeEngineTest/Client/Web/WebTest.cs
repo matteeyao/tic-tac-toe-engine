@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using App;
-using App.Client;
-using App.Client.Web;
-using App.Players;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.Client.Web;
+using TicTacToeEngine.Players;
+using TicTacToeEngine.UI;
+using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 
@@ -14,12 +14,12 @@ namespace Test.Client.Web
     [TestFixture]
     public class WebTest
     {
-        private App.Client.Web.Web web;
+        private TicTacToeEngine.Client.Web.Web web;
 
         [SetUp]
         public void Init()
         {
-            web = new App.Client.Web.Web();
+            web = new TicTacToeEngine.Client.Web.Web();
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace Test.Client.Web
         public void RunIsInvokedOnGameAtLeastOnce()
         {
             Game game = SetupMockGame();
-            App.Client.Web.Web webWithMockedGame = new App.Client.Web.Web(game);
+            TicTacToeEngine.Client.Web.Web webWithMockedGame = new TicTacToeEngine.Client.Web.Web(game);
             webWithMockedGame.Run(webWithMockedGame, "1");
             Mock.Get(game).Verify(x =>
                 x.InvokeTurn(It.IsAny<IClient>(), "1"), Times.AtLeast(1));

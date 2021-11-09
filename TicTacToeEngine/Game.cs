@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using App.Client;
-using App.Client.CLI;
-using App.Players;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine.Client.CLI;
+using TicTacToeEngine.UI;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.Players;
+using TicTacToeEngine.UI.Message;
 
-namespace App
+namespace TicTacToeEngine
 {
     public class Game
     {

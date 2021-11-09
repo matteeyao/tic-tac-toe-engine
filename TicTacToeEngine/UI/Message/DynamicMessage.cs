@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using App.Players;
+using TicTacToeEngine.Players;
 
-namespace App.UI.Message
+namespace TicTacToeEngine.UI.Message
 {
     public class DynamicMessage : IPrintable
     {

@@ -18,7 +18,7 @@
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
-        <RootNamespace>App</RootNamespace>
+        <RootNamespace>TicTacToeEngine</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

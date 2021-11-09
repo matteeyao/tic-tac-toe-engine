@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using App.Client;
-using App.Client.CLI;
-using App.UI.Message;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.Client.CLI;
+using TicTacToeEngine.UI.Message;
 using NUnit.Framework;
 
 namespace Test.Client.CLI

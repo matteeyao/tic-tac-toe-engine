@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine.UI;
+using TicTacToeEngine.UI.Message;
 
-namespace App.Client
+namespace TicTacToeEngine.Client
 {
     public interface IClient
     {

@@ -1,7 +1,7 @@
 using System;
-using App.UI.Message;
+using TicTacToeEngine.UI.Message;
 
-namespace App.Client.Web
+namespace TicTacToeEngine.Client.Web
 {
     public class MessageHandler : IClient.Interactable
     {

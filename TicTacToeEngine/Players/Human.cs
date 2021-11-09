@@ -1,6 +1,6 @@
-using App.Client;
+using TicTacToeEngine.Client;
 
-namespace App.Players
+namespace TicTacToeEngine.Players
 {
     public class Human : Player
     {

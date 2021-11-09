@@ -1,7 +1,7 @@
-using App.Client;
-using App.Client.CLI;
+using TicTacToeEngine.Client;
+using TicTacToeEngine.Client.CLI;
 
-namespace App
+namespace TicTacToeEngine
 {
     public class TicTacToe
     {

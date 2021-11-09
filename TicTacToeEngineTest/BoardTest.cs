@@ -1,4 +1,4 @@
-using App;
+using TicTacToeEngine;
 using NUnit.Framework;
 
 namespace Test

@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
-using App;
-using App.UI;
-using App.UI.Message;
+using TicTacToeEngine;
+using TicTacToeEngine.UI;
+using TicTacToeEngine.UI.Message;
 using Moq;
 using NUnit.Framework;
 
